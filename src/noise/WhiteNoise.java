@@ -5,30 +5,32 @@ import top.Maths;
 import top.NoiseLookupTable;
 
 public class WhiteNoise implements Noise {
-    
+
     @Override
-    public double noise(double x, double y, int seed, InterpolationType interpolator) {
+    public double noise(final double x, final double y, final int seed, final InterpolationType interpolator) {
         return NoiseLookupTable.WhiteNoise[Maths.HashCoordinates(x, y, seed)];
-        
+
     }
-    
+
     @Override
-    public double noise(double x, double y, double z, int seed, InterpolationType interpolator) {
+    public double noise(final double x, final double y, final double z, final int seed,
+            final InterpolationType interpolator) {
         return NoiseLookupTable.WhiteNoise[Maths.HashCoordinates(x, y, z, seed)];
-        
+
     }
-    
+
     @Override
-    public double noise(double x, double y, double z, double w, int seed, InterpolationType interpolator) {
+    public double noise(final double x, final double y, final double z, final double w, final int seed,
+            final InterpolationType interpolator) {
         return NoiseLookupTable.WhiteNoise[Maths.HashCoordinates(x, y, z, w, seed)];
-        
+
     }
-    
+
     @Override
-    public double noise(double x, double y, double z, double w, double u, double v, int seed,
-            InterpolationType interpolator) {
+    public double noise(final double x, final double y, final double z, final double w, final double u, final double v,
+            final int seed, final InterpolationType interpolator) {
         return NoiseLookupTable.WhiteNoise[Maths.HashCoordinates(x, y, z, w, u, v, seed)];
-        
+
     }
-    
+
 }

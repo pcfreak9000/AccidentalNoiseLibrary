@@ -2,23 +2,23 @@
 
 public class CellularGenerator {
     private int seed;
-
+    
     private final CellularCache cache2D = new CellularCache();
-
+    
     private final CellularCache cache3D = new CellularCache();
-
+    
     private final CellularCache cache4D = new CellularCache();
-
+    
     private final CellularCache cache6D = new CellularCache();
-
+    
     public CellularGenerator() {
         this.seed = 10000;
     }
-
+    
     public int getSeed() {
         return this.seed;
     }
-
+    
     public void setSeed(final int value) {
         if (value == this.seed) {
             return;
@@ -29,7 +29,7 @@ public class CellularGenerator {
         this.cache4D.IsValid = false;
         this.cache6D.IsValid = false;
     }
-
+    
     private CellularCache Get(final double x, final double y) {
         if (!this.cache2D.IsValid || x != this.cache2D.X || y != this.cache2D.Y) {
             Noise.CellularFunction(x, y, this.seed, this.cache2D.F, this.cache2D.D);
@@ -39,7 +39,7 @@ public class CellularGenerator {
         }
         return this.cache2D;
     }
-
+    
     private CellularCache Get(final double x, final double y, final double z) {
         if (!this.cache3D.IsValid || x != this.cache3D.X || y != this.cache3D.Y || z != this.cache3D.Z) {
             Noise.CellularFunction(x, y, z, this.seed, this.cache3D.F, this.cache3D.D);
@@ -50,7 +50,7 @@ public class CellularGenerator {
         }
         return this.cache3D;
     }
-
+    
     private CellularCache Get(final double x, final double y, final double z, final double w) {
         if (!this.cache4D.IsValid || x != this.cache4D.X || y != this.cache4D.Y || z != this.cache4D.Z
                 || w != this.cache4D.W) {
@@ -63,7 +63,7 @@ public class CellularGenerator {
         }
         return this.cache4D;
     }
-
+    
     private CellularCache Get(final double x, final double y, final double z, final double w, final double u,
             final double v) {
         if (!this.cache6D.IsValid || x != this.cache6D.X || y != this.cache6D.Y || z != this.cache6D.Z
@@ -77,7 +77,7 @@ public class CellularGenerator {
             this.cache6D.V = v;
             this.cache6D.IsValid = true;
         }
-
+        
         return this.cache6D;
     }
 }
