@@ -17,12 +17,6 @@ public class Noise {
     //    public abstract double Noise6DDelegate(double x, double y, double z, double w, double u, double v, int seed,
     //            InterpolationDelegate interp);
     
-    public final int MAX_SOURCES = 20;
-    
-    //TODO this is not so good
-    private static int FastFloor(double t) {
-        return (t > 0 ? (int) t : (int) t - 1);
-    }
     
     private static void AddDistance(double[] f, double[] disp, double testdist, double testdisp) {
         // Compare the given distance to the ones already in f

@@ -2,6 +2,7 @@ package noise;
 
 import Enums.InterpolationType;
 
+//TODO make singleton for each Noise?
 public interface Noise {
     
     double noise(double x, double y, int seed, InterpolationType interpolator);

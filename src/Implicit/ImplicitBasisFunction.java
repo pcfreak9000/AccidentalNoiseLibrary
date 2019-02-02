@@ -4,19 +4,14 @@ import java.util.Random;
 
 import Enums.BasisType;
 import Enums.InterpolationType;
+import noise.Noise;
 
 public final class ImplicitBasisFunction extends ImplicitModuleBase {
     private final double[] scale = new double[4];
     
     private final double[] offset = new double[4];
-        
-    private Noise2DDelegate noise2D;
     
-    private Noise3DDelegate noise3D;
-    
-    private Noise4DDelegate noise4D;
-    
-    private Noise6DDelegate noise6D;
+    private Noise noiseGen;
     
     private int seed;
     
@@ -32,10 +27,10 @@ public final class ImplicitBasisFunction extends ImplicitModuleBase {
     
     public ImplicitBasisFunction(BasisType basisType /* = BasisType.Gradient */,
             InterpolationType interpolationType /* = InterpolationType.Quintic */) {
-        this.basisType = basisType;
-        this.interpolationType = interpolationType;
+        this.setBasisType(basisType);
+        this.setInterpolationType(interpolationType);
         //TODO seed make long?
-        this.seed = (int) System.currentTimeMillis();
+        this.setSeed((int) System.currentTimeMillis());
     }
     
     public void setSeed(int value) {
@@ -65,45 +60,8 @@ public final class ImplicitBasisFunction extends ImplicitModuleBase {
     
     public void setBasisType(BasisType value) {
         this.basisType = value;
-        switch (this.basisType) {
-        case Value:
-            this.noise2D = Noise.ValueNoise;
-            this.noise3D = Noise.ValueNoise;
-            this.noise4D = Noise.ValueNoise;
-            this.noise6D = Noise.ValueNoise;
-            break;
-        case Gradient:
-            this.noise2D = Noise.GradientNoise;
-            this.noise3D = Noise.GradientNoise;
-            this.noise4D = Noise.GradientNoise;
-            this.noise6D = Noise.GradientNoise;
-            break;
-        case GradientValue:
-            this.noise2D = Noise.GradientValueNoise;
-            this.noise3D = Noise.GradientValueNoise;
-            this.noise4D = Noise.GradientValueNoise;
-            this.noise6D = Noise.GradientValueNoise;
-            break;
-        case White:
-            this.noise2D = Noise.WhiteNoise;
-            this.noise3D = Noise.WhiteNoise;
-            this.noise4D = Noise.WhiteNoise;
-            this.noise6D = Noise.WhiteNoise;
-            break;
-        case Simplex:
-            this.noise2D = Noise.SimplexNoise;
-            this.noise3D = Noise.SimplexNoise;
-            this.noise4D = Noise.SimplexNoise;
-            this.noise6D = Noise.SimplexNoise;
-            break;
+        this.noiseGen = value.noiseGen;
         
-        default:
-            this.noise2D = Noise.GradientNoise;
-            this.noise3D = Noise.GradientNoise;
-            this.noise4D = Noise.GradientNoise;
-            this.noise6D = Noise.GradientNoise;
-            break;
-        }
         SetMagicNumbers(this.basisType);
     }
     
@@ -119,7 +77,7 @@ public final class ImplicitBasisFunction extends ImplicitModuleBase {
         double nx = x * cos2D - y * sin2D;
         double ny = y * cos2D + x * sin2D;
         
-        return this.noise2D(nx, ny, this.seed, this.interpolator);
+        return this.noiseGen.noise(nx, ny, this.seed, this.interpolationType);
     }
     
     public double Get(double x, double y, double z) {
@@ -127,7 +85,7 @@ public final class ImplicitBasisFunction extends ImplicitModuleBase {
         double ny = (this.rotationMatrix[0][1] * x) + (this.rotationMatrix[1][1] * y) + (this.rotationMatrix[2][1] * z);
         double nz = (this.rotationMatrix[0][2] * x) + (this.rotationMatrix[1][2] * y) + (this.rotationMatrix[2][2] * z);
         
-        return this.noise3D(nx, ny, nz, this.seed, this.interpolator);
+        return this.noiseGen.noise(nx, ny, nz, this.seed, this.interpolationType);
     }
     
     public double Get(double x, double y, double z, double w) {
@@ -135,7 +93,7 @@ public final class ImplicitBasisFunction extends ImplicitModuleBase {
         double ny = (this.rotationMatrix[0][1] * x) + (this.rotationMatrix[1][1] * y) + (this.rotationMatrix[2][1] * z);
         double nz = (this.rotationMatrix[0][2] * x) + (this.rotationMatrix[1][2] * y) + (this.rotationMatrix[2][2] * z);
         
-        return this.noise4D(nx, ny, nz, w, this.seed, this.interpolator);
+        return this.noiseGen.noise(nx, ny, nz, w, this.seed, this.interpolationType);
     }
     
     public double Get(double x, double y, double z, double w, double u, double v) {
@@ -143,7 +101,7 @@ public final class ImplicitBasisFunction extends ImplicitModuleBase {
         double ny = (this.rotationMatrix[0][1] * x) + (this.rotationMatrix[1][1] * y) + (this.rotationMatrix[2][1] * z);
         double nz = (this.rotationMatrix[0][2] * x) + (this.rotationMatrix[1][2] * y) + (this.rotationMatrix[2][2] * z);
         
-        return this.noise6D(nx, ny, nz, w, u, v, this.seed, this.interpolator);
+        return this.noiseGen.noise(nx, ny, nz, w, u, v, this.seed, this.interpolationType);
     }
     
     private void SetRotationAngle(double x, double y, double z, double angle) {

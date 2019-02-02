@@ -1,9 +1,16 @@
 ﻿package Implicit;
 
 public abstract class ImplicitModuleBase {
-    public abstract int getSeed();
     
-    public abstract void setSeed(int seed);
+    public static final int MAX_SOURCES = 20;
+    
+    public int getSeed() {
+        return 0;
+    }
+    
+    public void setSeed(int seed) {
+        
+    }
     
     public double Get(double x, double y) {
         return 0.00;

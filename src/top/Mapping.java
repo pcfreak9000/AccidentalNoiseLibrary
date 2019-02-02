@@ -1,6 +1,4 @@
 ﻿package top;
-import java.lang.reflect.Array;
-
 import Enums.MappingMode;
 import Implicit.ImplicitModuleBase;
 
@@ -192,7 +190,8 @@ public class Mapping {
     }
     
     public static void Map3D(MappingMode mappingMode, double[][][] array, ImplicitModuleBase module,
-            MappingRanges ranges) {//TODO correct
+            MappingRanges ranges) {
+        //TODO correct?
         int width = array.length;
         int height = array[0].length;
         int depth = array[0][0].length;
