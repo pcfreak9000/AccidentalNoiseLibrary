@@ -1,7 +1,7 @@
 package noise;
 
 import Enums.InterpolationType;
-import top.Maths;
+import util.Maths;
 
 public class ValueNoise extends InterpolatedNoise {
 

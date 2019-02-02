@@ -1,6 +1,6 @@
 ﻿package Implicit;
 
-import top.Maths;
+import util.Maths;
 
 public final class ImplicitCeiling extends ImplicitModuleBase {
     public ImplicitCeiling(ImplicitModuleBase source) {

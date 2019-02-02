@@ -3,7 +3,7 @@
 import Enums.BasisType;
 import Enums.FractalType;
 import Enums.InterpolationType;
-import top.Maths;
+import util.Maths;
 
 public final class ImplicitFractal extends ImplicitModuleBase {
     private final ImplicitBasisFunction[] basisFunctions = new ImplicitBasisFunction[ImplicitModuleBase.MAX_SOURCES];

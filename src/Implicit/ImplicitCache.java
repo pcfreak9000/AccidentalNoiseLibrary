@@ -1,6 +1,6 @@
 ﻿package Implicit;
 
-import top.Cache;
+import noise.Cache;
 
 public final class ImplicitCache extends ImplicitModuleBase {
     private final Cache cache2D = new Cache();

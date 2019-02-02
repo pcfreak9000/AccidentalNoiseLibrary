@@ -1,8 +1,7 @@
 package noise;
 
 import Enums.InterpolationType;
-import top.Maths;
-import top.NoiseLookupTable;
+import util.Maths;
 
 public class GradientNoise extends InterpolatedNoise {
 

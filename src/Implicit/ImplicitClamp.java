@@ -1,6 +1,6 @@
 ﻿package Implicit;
 
-import top.Maths;
+import util.Maths;
 
 public final class ImplicitClamp extends ImplicitModuleBase {
     public ImplicitClamp(ImplicitModuleBase source, double low, double high) {

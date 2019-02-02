@@ -1,4 +1,4 @@
-package top;
+package util;
 
 public class Maths {
     // The "new" FNV-1A hashing

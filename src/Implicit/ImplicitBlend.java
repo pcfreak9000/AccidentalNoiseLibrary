@@ -1,6 +1,6 @@
 ﻿package Implicit;
 
-import top.Maths;
+import util.Maths;
 
 public final class ImplicitBlend extends ImplicitModuleBase {
     public ImplicitBlend(final ImplicitModuleBase source, final double low, final double high) {

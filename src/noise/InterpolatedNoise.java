@@ -1,6 +1,6 @@
 package noise;
 
-import top.Maths;
+import util.Maths;
 
 public abstract class InterpolatedNoise implements Noise {
 

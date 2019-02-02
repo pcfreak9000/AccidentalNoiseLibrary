@@ -4,8 +4,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 
 import Enums.InterpolationType;
-import top.Maths;
-import top.NoiseLookupTable;
+import util.Maths;
 
 public class SimplexNoise implements Noise {
 

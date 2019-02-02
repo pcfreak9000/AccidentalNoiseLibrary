@@ -1,6 +1,6 @@
-package top;
+package noise;
 
-class CellularCache {
+public class Cache {
     public double X = 0.00;
 
     public double Y = 0.00;
@@ -15,7 +15,5 @@ class CellularCache {
 
     public boolean IsValid = false;
 
-    public double[] F = new double[4];
-
-    public double[] D = new double[4];
+    public double Value = 0.00;
 }

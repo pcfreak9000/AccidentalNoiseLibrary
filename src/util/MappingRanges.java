@@ -1,4 +1,4 @@
-package top;
+package util;
 
 public class MappingRanges {
     public static final MappingRanges Default = new MappingRanges();

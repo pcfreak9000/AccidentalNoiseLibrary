@@ -1,6 +1,6 @@
 ﻿package Implicit;
 
-import top.Maths;
+import util.Maths;
 
 public final class ImplicitFloor extends ImplicitModuleBase {
 

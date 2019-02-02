@@ -1,6 +1,6 @@
 ﻿package Implicit;
 
-import top.Maths;
+import util.Maths;
 
 public final class ImplicitBias extends ImplicitModuleBase {
     public ImplicitBias(final ImplicitModuleBase source, final double bias) {
