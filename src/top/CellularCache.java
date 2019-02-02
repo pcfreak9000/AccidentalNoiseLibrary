@@ -1,5 +1,6 @@
+package top;
 
-class Cache {
+class CellularCache {
     public double X = 0.00;
     
     public double Y = 0.00;
@@ -14,5 +15,7 @@ class Cache {
     
     public boolean IsValid = false;
     
-    public double Value = 0.00;
+    public double[] F = new double[4];
+    
+    public double[] D = new double[4];
 }

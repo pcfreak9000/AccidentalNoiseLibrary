@@ -45,7 +45,7 @@ namespace TinkerWorX.AccidentalNoiseLibrary
                 var lower = threshold - falloff;
                 var upper = threshold + falloff;
                 var blend = Utilities.QuinticBlend((value - lower) / (upper - lower));
-                return Utilities.Lerp(blend, this.Low.Get(x, y), this.High.Get(x, y));
+                return Utilities.Maths.Lerp(blend, this.Low.Get(x, y), this.High.Get(x, y));
             }
 
             return (value < threshold ? this.Low.Get(x, y) : this.High.Get(x, y));
@@ -73,7 +73,7 @@ namespace TinkerWorX.AccidentalNoiseLibrary
                 var lower = threshold - falloff;
                 var upper = threshold + falloff;
                 var blend = Utilities.QuinticBlend((value - lower) / (upper - lower));
-                return Utilities.Lerp(blend, this.Low.Get(x, y, z), this.High.Get(x, y, z));
+                return Utilities.Maths.Lerp(blend, this.Low.Get(x, y, z), this.High.Get(x, y, z));
             }
 
             return (value < threshold ? this.Low.Get(x, y, z) : this.High.Get(x, y, z));
@@ -101,7 +101,7 @@ namespace TinkerWorX.AccidentalNoiseLibrary
                 var lower = threshold - falloff;
                 var upper = threshold + falloff;
                 var blend = Utilities.QuinticBlend((value - lower) / (upper - lower));
-                return Utilities.Lerp(blend, this.Low.Get(x, y, z, w), this.High.Get(x, y, z, w));
+                return Utilities.Maths.Lerp(blend, this.Low.Get(x, y, z, w), this.High.Get(x, y, z, w));
             }
 
             return value < threshold ? this.Low.Get(x, y, z, w) : this.High.Get(x, y, z, w);
@@ -129,7 +129,7 @@ namespace TinkerWorX.AccidentalNoiseLibrary
                 var lower = threshold - falloff;
                 var upper = threshold + falloff;
                 var blend = Utilities.QuinticBlend((value - lower) / (upper - lower));
-                return Utilities.Lerp(blend, this.Low.Get(x, y, z, w, u, v), this.High.Get(x, y, z, w, u, v));
+                return Utilities.Maths.Lerp(blend, this.Low.Get(x, y, z, w, u, v), this.High.Get(x, y, z, w, u, v));
             }
 
             return (value < threshold ? this.Low.Get(x, y, z, w, u, v) : this.High.Get(x, y, z, w, u, v));

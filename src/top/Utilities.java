@@ -1,4 +1,5 @@
-﻿
+﻿package top;
+
 public class Utilities {
     public static double Clamp(final double value, final double low, final double high) {
         if (value < low) {
@@ -26,7 +27,7 @@ public class Utilities {
         return Math.pow(target, Math.log(bias) / logPointFive);
     }
     
-    public static double Lerp(final double t, final double a, final double b) {
+    public static double Maths.Lerp(final double t, final double a, final double b) {
         return a + t * (b - a);
     }
     

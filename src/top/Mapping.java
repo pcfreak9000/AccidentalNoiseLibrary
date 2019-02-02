@@ -1,4 +1,5 @@
-﻿import java.lang.reflect.Array;
+﻿package top;
+import java.lang.reflect.Array;
 
 import Enums.MappingMode;
 import Implicit.ImplicitModuleBase;

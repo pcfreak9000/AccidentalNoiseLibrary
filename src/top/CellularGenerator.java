@@ -1,4 +1,5 @@
-﻿
+﻿package top;
+
 public class CellularGenerator {
     private int seed;
 
