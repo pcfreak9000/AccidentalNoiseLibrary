@@ -1,6 +1,6 @@
 package noise;
 
-import Enums.InterpolationType;
+import enums.InterpolationType;
 import util.Maths;
 
 public class WhiteNoise implements Noise {

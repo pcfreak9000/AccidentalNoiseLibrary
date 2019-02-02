@@ -1,4 +1,4 @@
-﻿package Implicit;
+﻿package implicit;
 
 import util.Maths;
 
@@ -34,22 +34,22 @@ public final class ImplicitBias extends ImplicitModuleBase {
     }
 
     @Override
-    public double Get(final double x, final double y) {
-        return Maths.Bias(this.Bias.Get(x, y), this.Source.Get(x, y));
+    public double get(final double x, final double y) {
+        return Maths.Bias(this.Bias.get(x, y), this.Source.get(x, y));
     }
 
     @Override
-    public double Get(final double x, final double y, final double z) {
-        return Maths.Bias(this.Bias.Get(x, y, z), this.Source.Get(x, y, z));
+    public double get(final double x, final double y, final double z) {
+        return Maths.Bias(this.Bias.get(x, y, z), this.Source.get(x, y, z));
     }
 
     @Override
-    public double Get(final double x, final double y, final double z, final double w) {
-        return Maths.Bias(this.Bias.Get(x, y, z, w), this.Source.Get(x, y, z, w));
+    public double get(final double x, final double y, final double z, final double w) {
+        return Maths.Bias(this.Bias.get(x, y, z, w), this.Source.get(x, y, z, w));
     }
 
     @Override
-    public double Get(final double x, final double y, final double z, final double w, final double u, final double v) {
-        return Maths.Bias(this.Bias.Get(x, y, z, w, u, v), this.Source.Get(x, y, z, w, u, v));
+    public double get(final double x, final double y, final double z, final double w, final double u, final double v) {
+        return Maths.Bias(this.Bias.get(x, y, z, w, u, v), this.Source.get(x, y, z, w, u, v));
     }
 }

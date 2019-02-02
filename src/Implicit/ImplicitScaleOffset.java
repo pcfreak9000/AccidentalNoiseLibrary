@@ -1,4 +1,4 @@
-﻿package Implicit;
+﻿package implicit;
 
 public final class ImplicitScaleOffset extends ImplicitModuleBase {
     public ImplicitScaleOffset(final ImplicitModuleBase source, final double scale, final double offset) {
@@ -38,22 +38,22 @@ public final class ImplicitScaleOffset extends ImplicitModuleBase {
     }
 
     @Override
-    public double Get(final double x, final double y) {
-        return this.Source.Get(x, y) * this.Scale.Get(x, y) + this.Offset.Get(x, y);
+    public double get(final double x, final double y) {
+        return this.Source.get(x, y) * this.Scale.get(x, y) + this.Offset.get(x, y);
     }
 
     @Override
-    public double Get(final double x, final double y, final double z) {
-        return this.Source.Get(x, y, z) * this.Scale.Get(x, y, z) + this.Offset.Get(x, y, z);
+    public double get(final double x, final double y, final double z) {
+        return this.Source.get(x, y, z) * this.Scale.get(x, y, z) + this.Offset.get(x, y, z);
     }
 
     @Override
-    public double Get(final double x, final double y, final double z, final double w) {
-        return this.Source.Get(x, y, z, w) * this.Scale.Get(x, y, z, w) + this.Offset.Get(x, y, z, w);
+    public double get(final double x, final double y, final double z, final double w) {
+        return this.Source.get(x, y, z, w) * this.Scale.get(x, y, z, w) + this.Offset.get(x, y, z, w);
     }
 
     @Override
-    public double Get(final double x, final double y, final double z, final double w, final double u, final double v) {
-        return this.Source.Get(x, y, z, w, u, v) * this.Scale.Get(x, y, z, w, u, v) + this.Offset.Get(x, y, z, w, u, v);
+    public double get(final double x, final double y, final double z, final double w, final double u, final double v) {
+        return this.Source.get(x, y, z, w, u, v) * this.Scale.get(x, y, z, w, u, v) + this.Offset.get(x, y, z, w, u, v);
     }
 }

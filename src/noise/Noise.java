@@ -1,6 +1,6 @@
 package noise;
 
-import Enums.InterpolationType;
+import enums.InterpolationType;
 
 //TODO make singleton for each Noise?
 public interface Noise {

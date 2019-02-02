@@ -1,4 +1,4 @@
-﻿package Implicit;
+﻿package implicit;
 
 public final class ImplicitCos extends ImplicitModuleBase {
     private ImplicitModuleBase Source;
@@ -16,22 +16,22 @@ public final class ImplicitCos extends ImplicitModuleBase {
     }
     
     @Override
-    public double Get(final double x, final double y) {
-        return Math.cos(this.Source.Get(x, y));
+    public double get(final double x, final double y) {
+        return Math.cos(this.Source.get(x, y));
     }
     
     @Override
-    public double Get(final double x, final double y, final double z) {
-        return Math.cos(this.Source.Get(x, y, z));
+    public double get(final double x, final double y, final double z) {
+        return Math.cos(this.Source.get(x, y, z));
     }
     
     @Override
-    public double Get(final double x, final double y, final double z, final double w) {
-        return Math.cos(this.Source.Get(x, y, z, w));
+    public double get(final double x, final double y, final double z, final double w) {
+        return Math.cos(this.Source.get(x, y, z, w));
     }
     
     @Override
-    public double Get(final double x, final double y, final double z, final double w, final double u, final double v) {
-        return Math.cos(this.Source.Get(x, y, z, w, u, v));
+    public double get(final double x, final double y, final double z, final double w, final double u, final double v) {
+        return Math.cos(this.Source.get(x, y, z, w, u, v));
     }
 }

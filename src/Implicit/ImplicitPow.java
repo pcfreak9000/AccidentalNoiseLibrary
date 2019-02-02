@@ -1,4 +1,4 @@
-﻿package Implicit;
+﻿package implicit;
 
 public final class ImplicitPow extends ImplicitModuleBase {
     public ImplicitPow(final ImplicitModuleBase source, final double power) {
@@ -32,22 +32,22 @@ public final class ImplicitPow extends ImplicitModuleBase {
     }
 
     @Override
-    public double Get(final double x, final double y) {
-        return Math.pow(this.Source.Get(x, y), this.Power.Get(x, y));
+    public double get(final double x, final double y) {
+        return Math.pow(this.Source.get(x, y), this.Power.get(x, y));
     }
 
     @Override
-    public double Get(final double x, final double y, final double z) {
-        return Math.pow(this.Source.Get(x, y, z), this.Power.Get(x, y, z));
+    public double get(final double x, final double y, final double z) {
+        return Math.pow(this.Source.get(x, y, z), this.Power.get(x, y, z));
     }
 
     @Override
-    public double Get(final double x, final double y, final double z, final double w) {
-        return Math.pow(this.Source.Get(x, y, z, w), this.Power.Get(x, y, z, w));
+    public double get(final double x, final double y, final double z, final double w) {
+        return Math.pow(this.Source.get(x, y, z, w), this.Power.get(x, y, z, w));
     }
 
     @Override
-    public double Get(final double x, final double y, final double z, final double w, final double u, final double v) {
-        return Math.pow(this.Source.Get(x, y, z, w, u, v), this.Power.Get(x, y, z, w, u, v));
+    public double get(final double x, final double y, final double z, final double w, final double u, final double v) {
+        return Math.pow(this.Source.get(x, y, z, w, u, v), this.Power.get(x, y, z, w, u, v));
     }
 }

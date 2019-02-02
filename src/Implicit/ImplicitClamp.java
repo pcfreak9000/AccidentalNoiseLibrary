@@ -1,4 +1,4 @@
-﻿package Implicit;
+﻿package implicit;
 
 import util.Maths;
 
@@ -40,23 +40,23 @@ public final class ImplicitClamp extends ImplicitModuleBase {
     }
 
     @Override
-    public double Get(final double x, final double y) {
-        return Maths.Clamp(this.Source.Get(x, y), this.Low.Get(x, y), this.High.Get(x, y));
+    public double get(final double x, final double y) {
+        return Maths.Clamp(this.Source.get(x, y), this.Low.get(x, y), this.High.get(x, y));
     }
 
     @Override
-    public double Get(final double x, final double y, final double z) {
-        return Maths.Clamp(this.Source.Get(x, y, z), this.Low.Get(x, y, z), this.High.Get(x, y, z));
+    public double get(final double x, final double y, final double z) {
+        return Maths.Clamp(this.Source.get(x, y, z), this.Low.get(x, y, z), this.High.get(x, y, z));
     }
 
     @Override
-    public double Get(final double x, final double y, final double z, final double w) {
-        return Maths.Clamp(this.Source.Get(x, y, z, w), this.Low.Get(x, y, z, w), this.High.Get(x, y, z, w));
+    public double get(final double x, final double y, final double z, final double w) {
+        return Maths.Clamp(this.Source.get(x, y, z, w), this.Low.get(x, y, z, w), this.High.get(x, y, z, w));
     }
 
     @Override
-    public double Get(final double x, final double y, final double z, final double w, final double u, final double v) {
-        return Maths.Clamp(this.Source.Get(x, y, z, w, u, v), this.Low.Get(x, y, z, w, u, v),
-                this.High.Get(x, y, z, w, u, v));
+    public double get(final double x, final double y, final double z, final double w, final double u, final double v) {
+        return Maths.Clamp(this.Source.get(x, y, z, w, u, v), this.Low.get(x, y, z, w, u, v),
+                this.High.get(x, y, z, w, u, v));
     }
 }

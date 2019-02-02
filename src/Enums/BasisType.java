@@ -1,4 +1,4 @@
-package Enums;
+package enums;
 
 import noise.GradientNoise;
 import noise.GradientValueNoise;

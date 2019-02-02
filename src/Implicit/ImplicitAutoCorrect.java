@@ -1,4 +1,4 @@
-﻿package Implicit;
+﻿package implicit;
 
 import java.util.Random;
 
@@ -71,7 +71,7 @@ public final class ImplicitAutoCorrect extends ImplicitModuleBase {
             final double nx = random.nextDouble() * 4.0 - 2.0;
             final double ny = random.nextDouble() * 4.0 - 2.0;
             
-            final double value = this.Source.Get(nx, ny);
+            final double value = this.Source.get(nx, ny);
             if (value < mn) {
                 mn = value;
             }
@@ -90,7 +90,7 @@ public final class ImplicitAutoCorrect extends ImplicitModuleBase {
             final double ny = random.nextDouble() * 4.0 - 2.0;
             final double nz = random.nextDouble() * 4.0 - 2.0;
             
-            final double value = this.Source.Get(nx, ny, nz);
+            final double value = this.Source.get(nx, ny, nz);
             if (value < mn) {
                 mn = value;
             }
@@ -110,7 +110,7 @@ public final class ImplicitAutoCorrect extends ImplicitModuleBase {
             final double nz = random.nextDouble() * 4.0 - 2.0;
             final double nw = random.nextDouble() * 4.0 - 2.0;
             
-            final double value = this.Source.Get(nx, ny, nz, nw);
+            final double value = this.Source.get(nx, ny, nz, nw);
             if (value < mn) {
                 mn = value;
             }
@@ -132,7 +132,7 @@ public final class ImplicitAutoCorrect extends ImplicitModuleBase {
             final double nu = random.nextDouble() * 4.0 - 2.0;
             final double nv = random.nextDouble() * 4.0 - 2.0;
             
-            final double value = this.Source.Get(nx, ny, nz, nw, nu, nv);
+            final double value = this.Source.get(nx, ny, nz, nw, nu, nv);
             if (value < mn) {
                 mn = value;
             }
@@ -151,23 +151,23 @@ public final class ImplicitAutoCorrect extends ImplicitModuleBase {
     }
     
     @Override
-    public double Get(final double x, final double y) {
-        return Math.max(this.low, Math.min(this.high, this.Source.Get(x, y) * this.scale2D + this.offset2D));
+    public double get(final double x, final double y) {
+        return Math.max(this.low, Math.min(this.high, this.Source.get(x, y) * this.scale2D + this.offset2D));
     }
     
     @Override
-    public double Get(final double x, final double y, final double z) {
-        return Math.max(this.low, Math.min(this.high, this.Source.Get(x, y, z) * this.scale3D + this.offset3D));
+    public double get(final double x, final double y, final double z) {
+        return Math.max(this.low, Math.min(this.high, this.Source.get(x, y, z) * this.scale3D + this.offset3D));
     }
     
     @Override
-    public double Get(final double x, final double y, final double z, final double w) {
-        return Math.max(this.low, Math.min(this.high, this.Source.Get(x, y, z, w) * this.scale4D + this.offset4D));
+    public double get(final double x, final double y, final double z, final double w) {
+        return Math.max(this.low, Math.min(this.high, this.Source.get(x, y, z, w) * this.scale4D + this.offset4D));
     }
     
     @Override
-    public double Get(final double x, final double y, final double z, final double w, final double u, final double v) {
+    public double get(final double x, final double y, final double z, final double w, final double u, final double v) {
         return Math.max(this.low,
-                Math.min(this.high, this.Source.Get(x, y, z, w, u, v) * this.scale6D + this.offset6D));
+                Math.min(this.high, this.Source.get(x, y, z, w, u, v) * this.scale6D + this.offset6D));
     }
 }

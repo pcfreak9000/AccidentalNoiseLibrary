@@ -1,4 +1,4 @@
-﻿package Implicit;
+﻿package implicit;
 
 import util.Maths;
 
@@ -40,12 +40,12 @@ public final class ImplicitTiers extends ImplicitModuleBase {
     }
 
     @Override
-    public double Get(final double x, final double y) {
+    public double get(final double x, final double y) {
         int numsteps = this.Tiers;
         if (this.Smooth) {
             --numsteps;
         }
-        final double val = this.Source.Get(x, y);
+        final double val = this.Source.get(x, y);
         double tb = Maths.floor(val * numsteps);
         double tt = tb + 1.0;
         final double t = val * numsteps - tb;
@@ -56,12 +56,12 @@ public final class ImplicitTiers extends ImplicitModuleBase {
     }
 
     @Override
-    public double Get(final double x, final double y, final double z) {
+    public double get(final double x, final double y, final double z) {
         int numsteps = this.Tiers;
         if (this.Smooth) {
             --numsteps;
         }
-        final double val = this.Source.Get(x, y, z);
+        final double val = this.Source.get(x, y, z);
         double tb = Maths.floor(val * numsteps);
         double tt = tb + 1.0;
         final double t = val * numsteps - tb;
@@ -72,12 +72,12 @@ public final class ImplicitTiers extends ImplicitModuleBase {
     }
 
     @Override
-    public double Get(final double x, final double y, final double z, final double w) {
+    public double get(final double x, final double y, final double z, final double w) {
         int numsteps = this.Tiers;
         if (this.Smooth) {
             --numsteps;
         }
-        final double val = this.Source.Get(x, y, z, w);
+        final double val = this.Source.get(x, y, z, w);
         double tb = Maths.floor(val * numsteps);
         double tt = tb + 1.0;
         final double t = val * numsteps - tb;
@@ -88,12 +88,12 @@ public final class ImplicitTiers extends ImplicitModuleBase {
     }
 
     @Override
-    public double Get(final double x, final double y, final double z, final double w, final double u, final double v) {
+    public double get(final double x, final double y, final double z, final double w, final double u, final double v) {
         int numsteps = this.Tiers;
         if (this.Smooth) {
             --numsteps;
         }
-        final double val = this.Source.Get(x, y, z, w, u, v);
+        final double val = this.Source.get(x, y, z, w, u, v);
         double tb = Maths.floor(val * numsteps);
         double tt = tb + 1.0;
         final double t = val * numsteps - tb;

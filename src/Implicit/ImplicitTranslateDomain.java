@@ -1,4 +1,4 @@
-﻿package Implicit;
+﻿package implicit;
 
 public final class ImplicitTranslateDomain extends ImplicitModuleBase {
     public ImplicitTranslateDomain(final ImplicitModuleBase source, final double xAxis, final double yAxis,
@@ -83,25 +83,25 @@ public final class ImplicitTranslateDomain extends ImplicitModuleBase {
     }
 
     @Override
-    public double Get(final double x, final double y) {
-        return this.Source.Get(x + this.XAxis.Get(x, y), y + this.YAxis.Get(x, y));
+    public double get(final double x, final double y) {
+        return this.Source.get(x + this.XAxis.get(x, y), y + this.YAxis.get(x, y));
     }
 
     @Override
-    public double Get(final double x, final double y, final double z) {
-        return this.Source.Get(x + this.XAxis.Get(x, y, z), y + this.YAxis.Get(x, y, z), z + this.ZAxis.Get(x, y, z));
+    public double get(final double x, final double y, final double z) {
+        return this.Source.get(x + this.XAxis.get(x, y, z), y + this.YAxis.get(x, y, z), z + this.ZAxis.get(x, y, z));
     }
 
     @Override
-    public double Get(final double x, final double y, final double z, final double w) {
-        return this.Source.Get(x + this.XAxis.Get(x, y, z, w), y + this.YAxis.Get(x, y, z, w),
-                z + this.ZAxis.Get(x, y, z, w), w + this.WAxis.Get(x, y, z, w));
+    public double get(final double x, final double y, final double z, final double w) {
+        return this.Source.get(x + this.XAxis.get(x, y, z, w), y + this.YAxis.get(x, y, z, w),
+                z + this.ZAxis.get(x, y, z, w), w + this.WAxis.get(x, y, z, w));
     }
 
     @Override
-    public double Get(final double x, final double y, final double z, final double w, final double u, final double v) {
-        return this.Source.Get(x + this.XAxis.Get(x, y, z, w, u, v), y + this.YAxis.Get(x, y, z, w, u, v),
-                z + this.ZAxis.Get(x, y, z, w, u, v), w + this.WAxis.Get(x, y, z, w, u, v),
-                u + this.UAxis.Get(x, y, z, w, u, v), v + this.VAxis.Get(x, y, z, w, u, v));
+    public double get(final double x, final double y, final double z, final double w, final double u, final double v) {
+        return this.Source.get(x + this.XAxis.get(x, y, z, w, u, v), y + this.YAxis.get(x, y, z, w, u, v),
+                z + this.ZAxis.get(x, y, z, w, u, v), w + this.WAxis.get(x, y, z, w, u, v),
+                u + this.UAxis.get(x, y, z, w, u, v), v + this.VAxis.get(x, y, z, w, u, v));
     }
 }

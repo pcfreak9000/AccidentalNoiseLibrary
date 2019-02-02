@@ -1,4 +1,4 @@
-﻿package Implicit;
+﻿package implicit;
 
 public final class ImplicitConstant extends ImplicitModuleBase {
     private final double value;
@@ -12,22 +12,22 @@ public final class ImplicitConstant extends ImplicitModuleBase {
     }
     
     @Override
-    public double Get(final double x, final double y) {
+    public double get(final double x, final double y) {
         return this.value;
     }
     
     @Override
-    public double Get(final double x, final double y, final double z) {
+    public double get(final double x, final double y, final double z) {
         return this.value;
     }
     
     @Override
-    public double Get(final double x, final double y, final double z, final double w) {
+    public double get(final double x, final double y, final double z, final double w) {
         return this.value;
     }
     
     @Override
-    public double Get(final double x, final double y, final double z, final double w, final double u, final double v) {
+    public double get(final double x, final double y, final double z, final double w, final double u, final double v) {
         return this.value;
     }
 }

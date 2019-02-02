@@ -1,7 +1,7 @@
 ﻿package util;
 
-import Enums.MappingMode;
-import Implicit.ImplicitModuleBase;
+import enums.MappingMode;
+import implicit.ImplicitModuleBase;
 
 //TODO port Math class sin/cos!?
 public class Mapping {
@@ -33,7 +33,7 @@ public class Mapping {
                     nx = ranges.MapX0 + p * (ranges.MapX1 - ranges.MapX0);
                     ny = ranges.MapY0 + q * (ranges.MapY1 - ranges.MapY0);
                     nz = z;
-                    val = module.Get(nx, ny, nz);
+                    val = module.get(nx, ny, nz);
                     break;
                 case SeamlessX:
                     dx = ranges.LoopX1 - ranges.LoopX0;
@@ -43,7 +43,7 @@ public class Mapping {
                     ny = ranges.LoopX0 + Math.sin(p * PI2) * dx / PI2;
                     nz = ranges.MapY0 + q * dy;
                     nw = z;
-                    val = module.Get(nx, ny, nz, nw);
+                    val = module.get(nx, ny, nz, nw);
                     break;
                 case SeamlessY:
                     dx = ranges.MapX1 - ranges.MapX0;
@@ -53,7 +53,7 @@ public class Mapping {
                     ny = ranges.LoopY0 + Math.cos(q * PI2) * dy / PI2;
                     nz = ranges.LoopY0 + Math.sin(q * PI2) * dy / PI2;
                     nw = z;
-                    val = module.Get(nx, ny, nz, nw);
+                    val = module.get(nx, ny, nz, nw);
                     break;
                 case SeamlessZ:
                     dx = ranges.MapX1 - ranges.MapX0;
@@ -65,7 +65,7 @@ public class Mapping {
                     final double zval = r * (ranges.MapZ1 - ranges.MapZ0) / (ranges.LoopZ1 - ranges.LoopZ0);
                     nz = ranges.LoopZ0 + Math.cos(zval * PI2) * dz / PI2;
                     nw = ranges.LoopZ0 + Math.sin(zval * PI2) * dz / PI2;
-                    val = module.Get(nx, ny, nz, nw);
+                    val = module.get(nx, ny, nz, nw);
                     break;
                 case SeamlessXY:
                     dx = ranges.LoopX1 - ranges.LoopX0;
@@ -77,7 +77,7 @@ public class Mapping {
                     nz = ranges.LoopY0 + Math.cos(q * PI2) * dy / PI2;
                     nw = ranges.LoopY0 + Math.sin(q * PI2) * dy / PI2;
                     nu = z;
-                    val = module.Get(nx, ny, nz, nw, nu, 0);
+                    val = module.get(nx, ny, nz, nw, nu, 0);
                     break;
                 case SeamlessXZ:
                     dx = ranges.LoopX1 - ranges.LoopX0;
@@ -91,7 +91,7 @@ public class Mapping {
                     nz = ranges.MapY0 + q * dy;
                     nw = ranges.LoopZ0 + Math.cos(xzval * PI2) * dz / PI2;
                     nu = ranges.LoopZ0 + Math.sin(xzval * PI2) * dz / PI2;
-                    val = module.Get(nx, ny, nz, nw, nu, 0);
+                    val = module.get(nx, ny, nz, nw, nu, 0);
                     break;
                 case SeamlessYZ:
                     dx = ranges.MapX1 - ranges.MapX0;
@@ -105,7 +105,7 @@ public class Mapping {
                     nz = ranges.LoopY0 + Math.sin(q * PI2) * dy / PI2;
                     nw = ranges.LoopZ0 + Math.cos(yzval * PI2) * dz / PI2;
                     nu = ranges.LoopZ0 + Math.sin(yzval * PI2) * dz / PI2;
-                    val = module.Get(nx, ny, nz, nw, nu, 0);
+                    val = module.get(nx, ny, nz, nw, nu, 0);
                     break;
                 case SeamlessXYZ:
                     dx = ranges.LoopX1 - ranges.LoopX0;
@@ -121,7 +121,7 @@ public class Mapping {
                     nw = ranges.LoopY0 + Math.sin(q * PI2) * dy / PI2;
                     nu = ranges.LoopZ0 + Math.cos(xyzval * PI2) * dz / PI2;
                     final double nv = ranges.LoopZ0 + Math.sin(xyzval * PI2) * dz / PI2;
-                    val = module.Get(nx, ny, nz, nw, nu, nv);
+                    val = module.get(nx, ny, nz, nw, nu, nv);
                     break;
                 }
                 array[x][y] = val;
@@ -149,7 +149,7 @@ public class Mapping {
                 case SeamlessNone:
                     nx = ranges.MapX0 + p * (ranges.MapX1 - ranges.MapX0);
                     ny = ranges.MapY0 + q * (ranges.MapY1 - ranges.MapY0);
-                    val = module.Get(nx, ny);
+                    val = module.get(nx, ny);
                     break;
                 case SeamlessX:
                     dx = ranges.LoopX1 - ranges.LoopX0;
@@ -158,7 +158,7 @@ public class Mapping {
                     nx = ranges.LoopX0 + Math.cos(p * PI2) * dx / PI2;
                     ny = ranges.LoopX0 + Math.sin(p * PI2) * dx / PI2;
                     nz = ranges.MapY0 + q * dy;
-                    val = module.Get(nx, ny, nz);
+                    val = module.get(nx, ny, nz);
                     break;
                 case SeamlessY:
                     dx = ranges.MapX1 - ranges.MapX0;
@@ -167,7 +167,7 @@ public class Mapping {
                     nx = ranges.MapX0 + p * dx;
                     ny = ranges.LoopY0 + Math.cos(q * PI2) * dy / PI2;
                     nz = ranges.LoopY0 + Math.sin(q * PI2) * dy / PI2;
-                    val = module.Get(nx, ny, nz);
+                    val = module.get(nx, ny, nz);
                     break;
 
                 case SeamlessXY:
@@ -179,7 +179,7 @@ public class Mapping {
                     ny = ranges.LoopX0 + Math.sin(p * PI2) * dx / PI2;
                     nz = ranges.LoopY0 + Math.cos(q * PI2) * dy / PI2;
                     final double nw = ranges.LoopY0 + Math.sin(q * PI2) * dy / PI2;
-                    val = module.Get(nx, ny, nz, nw);
+                    val = module.get(nx, ny, nz, nw);
                     break;
                 default:
                     throw new IllegalArgumentException("" + mappingMode);
@@ -221,7 +221,7 @@ public class Mapping {
                         nx = ranges.MapX0 + p * dx;
                         ny = ranges.MapY0 + q * dy;
                         nz = ranges.MapZ0 + r * dz;
-                        val = module.Get(nx, ny, nz);
+                        val = module.get(nx, ny, nz);
                         break;
                     case SeamlessX:
                         dx = ranges.LoopX1 - ranges.LoopX0;
@@ -232,7 +232,7 @@ public class Mapping {
                         ny = ranges.LoopX0 + Math.sin(p * PI2) * dx / PI2;
                         nz = ranges.MapY0 + q * dy;
                         nw = ranges.MapZ0 + depth * dz;
-                        val = module.Get(nx, ny, nz, nw);
+                        val = module.get(nx, ny, nz, nw);
                         break;
                     case SeamlessY:
                         dx = ranges.MapX1 - ranges.MapX0;
@@ -243,7 +243,7 @@ public class Mapping {
                         ny = ranges.LoopY0 + Math.cos(q * PI2) * dy / PI2;
                         nz = ranges.LoopY0 + Math.sin(q * PI2) * dy / PI2;
                         nw = ranges.MapZ0 + r * dz;
-                        val = module.Get(nx, ny, nz, nw);
+                        val = module.get(nx, ny, nz, nw);
                         break;
                     case SeamlessZ:
                         dx = ranges.MapX1 - ranges.MapX0;
@@ -254,7 +254,7 @@ public class Mapping {
                         ny = ranges.MapY0 + q * dy;
                         nz = ranges.LoopZ0 + Math.cos(r * PI2) * dz / PI2;
                         nw = ranges.LoopZ0 + Math.sin(r * PI2) * dz / PI2;
-                        val = module.Get(nx, ny, nz, nw);
+                        val = module.get(nx, ny, nz, nw);
                         break;
                     case SeamlessXY:
                         dx = ranges.LoopX1 - ranges.LoopX0;
@@ -267,7 +267,7 @@ public class Mapping {
                         nz = ranges.LoopY0 + Math.cos(q * PI2) * dy / PI2;
                         nw = ranges.LoopY0 + Math.sin(q * PI2) * dy / PI2;
                         nu = ranges.MapZ0 + r * dz;
-                        val = module.Get(nx, ny, nz, nw, nu, 0);
+                        val = module.get(nx, ny, nz, nw, nu, 0);
                         break;
                     case SeamlessXZ:
                         dx = ranges.LoopX1 - ranges.LoopX0;
@@ -280,7 +280,7 @@ public class Mapping {
                         nz = ranges.MapY0 + q * dy;
                         nw = ranges.LoopZ0 + Math.cos(r * PI2) * dz / PI2;
                         nu = ranges.LoopZ0 + Math.sin(r * PI2) * dz / PI2;
-                        val = module.Get(nx, ny, nz, nw, nu, 0);
+                        val = module.get(nx, ny, nz, nw, nu, 0);
                         break;
                     case SeamlessYZ:
                         dx = ranges.MapX1 - ranges.MapX0;
@@ -293,7 +293,7 @@ public class Mapping {
                         nz = ranges.LoopY0 + Math.sin(q * PI2) * dy / PI2;
                         nw = ranges.LoopZ0 + Math.cos(r * PI2) * dz / PI2;
                         nu = ranges.LoopZ0 + Math.sin(r * PI2) * dz / PI2;
-                        val = module.Get(nx, ny, nz, nw, nu, 0);
+                        val = module.get(nx, ny, nz, nw, nu, 0);
                         break;
                     case SeamlessXYZ:
                         dx = ranges.LoopX1 - ranges.LoopX0;
@@ -308,7 +308,7 @@ public class Mapping {
                         nw = ranges.LoopY0 + Math.sin(q * PI2) * dy / PI2;
                         nu = ranges.LoopZ0 + Math.cos(r * PI2) * dz / PI2;
                         final double nv = ranges.LoopZ0 + Math.sin(r * PI2) * dz / PI2;
-                        val = module.Get(nx, ny, nz, nw, nu, nv);
+                        val = module.get(nx, ny, nz, nw, nu, nv);
                         break;
                     }
                     array[x][y][z] = val;

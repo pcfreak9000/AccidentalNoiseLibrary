@@ -1,4 +1,4 @@
-﻿package Implicit;
+﻿package implicit;
 
 public final class ImplicitBrightContrast extends ImplicitModuleBase {
     public ImplicitBrightContrast(final ImplicitModuleBase source, final double brightness,
@@ -47,57 +47,57 @@ public final class ImplicitBrightContrast extends ImplicitModuleBase {
     }
     
     @Override
-    public double Get(final double x, final double y) {
-        double value = this.Source.Get(x, y);
+    public double get(final double x, final double y) {
+        double value = this.Source.get(x, y);
         // Apply brightness
-        value += this.Brightness.Get(x, y);
+        value += this.Brightness.get(x, y);
         
         // Subtract contrastThreshold, scale by contrastFactor, add contrastThreshold
-        final double threshold = this.ContrastThreshold.Get(x, y);
+        final double threshold = this.ContrastThreshold.get(x, y);
         value -= threshold;
-        value *= this.ContrastFactor.Get(x, y);
+        value *= this.ContrastFactor.get(x, y);
         value += threshold;
         return value;
     }
     
     @Override
-    public double Get(final double x, final double y, final double z) {
-        double value = this.Source.Get(x, y, z);
+    public double get(final double x, final double y, final double z) {
+        double value = this.Source.get(x, y, z);
         // Apply brightness
-        value += this.Brightness.Get(x, y, z);
+        value += this.Brightness.get(x, y, z);
         
         // Subtract contrastThreshold, scale by contrastFactor, add contrastThreshold
-        final double threshold = this.ContrastThreshold.Get(x, y, z);
+        final double threshold = this.ContrastThreshold.get(x, y, z);
         value -= threshold;
-        value *= this.ContrastFactor.Get(x, y, z);
+        value *= this.ContrastFactor.get(x, y, z);
         value += threshold;
         return value;
     }
     
     @Override
-    public double Get(final double x, final double y, final double z, final double w) {
-        double value = this.Source.Get(x, y, z, w);
+    public double get(final double x, final double y, final double z, final double w) {
+        double value = this.Source.get(x, y, z, w);
         // Apply brightness
-        value += this.Brightness.Get(x, y, z, w);
+        value += this.Brightness.get(x, y, z, w);
         
         // Subtract contrastThreshold, scale by contrastFactor, add contrastThreshold
-        final double threshold = this.ContrastThreshold.Get(x, y, z, w);
+        final double threshold = this.ContrastThreshold.get(x, y, z, w);
         value -= threshold;
-        value *= this.ContrastFactor.Get(x, y, z, w);
+        value *= this.ContrastFactor.get(x, y, z, w);
         value += threshold;
         return value;
     }
     
     @Override
-    public double Get(final double x, final double y, final double z, final double w, final double u, final double v) {
-        double value = this.Source.Get(x, y, z, w, u, v);
+    public double get(final double x, final double y, final double z, final double w, final double u, final double v) {
+        double value = this.Source.get(x, y, z, w, u, v);
         // Apply brightness
-        value += this.Brightness.Get(x, y, z, w, u, v);
+        value += this.Brightness.get(x, y, z, w, u, v);
         
         // Subtract contrastThreshold, scale by contrastFactor, add contrastThreshold
-        final double threshold = this.ContrastThreshold.Get(x, y, z, w, u, v);
+        final double threshold = this.ContrastThreshold.get(x, y, z, w, u, v);
         value -= threshold;
-        value *= this.ContrastFactor.Get(x, y, z, w, u, v);
+        value *= this.ContrastFactor.get(x, y, z, w, u, v);
         value += threshold;
         return value;
     }

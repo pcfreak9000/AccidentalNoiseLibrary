@@ -1,6 +1,6 @@
 package noise;
 
-import Enums.InterpolationType;
+import enums.InterpolationType;
 
 public class GradientValueNoise implements Noise {
     

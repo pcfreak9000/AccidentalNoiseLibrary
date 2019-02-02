@@ -1,4 +1,4 @@
-﻿package Implicit;
+﻿package implicit;
 
 import util.Maths;
 
@@ -23,22 +23,22 @@ public final class ImplicitFloor extends ImplicitModuleBase {
     }
     
     @Override
-    public double Get(final double x, final double y) {
-        return Maths.floor(this.Source.Get(x, y));
+    public double get(final double x, final double y) {
+        return Maths.floor(this.Source.get(x, y));
     }
     
     @Override
-    public double Get(final double x, final double y, final double z) {
-        return Maths.floor(this.Source.Get(x, y, z));
+    public double get(final double x, final double y, final double z) {
+        return Maths.floor(this.Source.get(x, y, z));
     }
     
     @Override
-    public double Get(final double x, final double y, final double z, final double w) {
-        return Maths.floor(this.Source.Get(x, y, z, w));
+    public double get(final double x, final double y, final double z, final double w) {
+        return Maths.floor(this.Source.get(x, y, z, w));
     }
     
     @Override
-    public double Get(final double x, final double y, final double z, final double w, final double u, final double v) {
-        return Maths.floor(this.Source.Get(x, y, z, w, u, v));
+    public double get(final double x, final double y, final double z, final double w, final double u, final double v) {
+        return Maths.floor(this.Source.get(x, y, z, w, u, v));
     }
 }

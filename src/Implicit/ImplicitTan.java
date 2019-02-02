@@ -1,4 +1,4 @@
-﻿package Implicit;
+﻿package implicit;
 
 public final class ImplicitTan extends ImplicitModuleBase {
     public ImplicitTan(final ImplicitModuleBase source) {
@@ -16,22 +16,22 @@ public final class ImplicitTan extends ImplicitModuleBase {
     }
 
     @Override
-    public double Get(final double x, final double y) {
-        return Math.tan(this.Source.Get(x, y));
+    public double get(final double x, final double y) {
+        return Math.tan(this.Source.get(x, y));
     }
 
     @Override
-    public double Get(final double x, final double y, final double z) {
-        return Math.tan(this.Source.Get(x, y, z));
+    public double get(final double x, final double y, final double z) {
+        return Math.tan(this.Source.get(x, y, z));
     }
 
     @Override
-    public double Get(final double x, final double y, final double z, final double w) {
-        return Math.tan(this.Source.Get(x, y, z, w));
+    public double get(final double x, final double y, final double z, final double w) {
+        return Math.tan(this.Source.get(x, y, z, w));
     }
 
     @Override
-    public double Get(final double x, final double y, final double z, final double w, final double u, final double v) {
-        return Math.tan(this.Source.Get(x, y, z, w, u, v));
+    public double get(final double x, final double y, final double z, final double w, final double u, final double v) {
+        return Math.tan(this.Source.get(x, y, z, w, u, v));
     }
 }

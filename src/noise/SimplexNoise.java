@@ -3,7 +3,7 @@ package noise;
 import java.util.Arrays;
 import java.util.Comparator;
 
-import Enums.InterpolationType;
+import enums.InterpolationType;
 import util.Maths;
 
 public class SimplexNoise implements Noise {
@@ -94,9 +94,9 @@ public class SimplexNoise implements Noise {
         final double y2 = y0 - 1.0 + 2.0 * G2;
         
         // Hash the triangle coordinates to index the gradient table
-        final byte h0 = Maths.HashCoordinates(i, j, seed);
-        final byte h1 = Maths.HashCoordinates(i + i1, j + j1, seed);
-        final byte h2 = Maths.HashCoordinates(i + 1, j + 1, seed);
+        final int h0 = Maths.HashCoordinates(i, j, seed);
+        final int h1 = Maths.HashCoordinates(i + i1, j + j1, seed);
+        final int h2 = Maths.HashCoordinates(i + 1, j + 1, seed);
         
         // Now, index the tables
         final double[] g0 = { NoiseLookupTable.Gradient2D[h0][0], NoiseLookupTable.Gradient2D[h0][1] };
@@ -213,10 +213,10 @@ public class SimplexNoise implements Noise {
         final double y3 = y0 - 1.0 + 3.0 * G3;
         final double z3 = z0 - 1.0 + 3.0 * G3;
         
-        final byte h0 = Maths.HashCoordinates(i, j, k, seed);
-        final byte h1 = Maths.HashCoordinates(i + i1, j + j1, k + k1, seed);
-        final byte h2 = Maths.HashCoordinates(i + i2, j + j2, k + k2, seed);
-        final byte h3 = Maths.HashCoordinates(i + 1, j + 1, k + 1, seed);
+        final int h0 = Maths.HashCoordinates(i, j, k, seed);
+        final int h1 = Maths.HashCoordinates(i + i1, j + j1, k + k1, seed);
+        final int h2 = Maths.HashCoordinates(i + i2, j + j2, k + k2, seed);
+        final int h3 = Maths.HashCoordinates(i + 1, j + 1, k + 1, seed);
         
         final double[] g0 = { NoiseLookupTable.Gradient3D[h0][0], NoiseLookupTable.Gradient3D[h0][1],
                 NoiseLookupTable.Gradient3D[h0][2] };
@@ -338,11 +338,11 @@ public class SimplexNoise implements Noise {
         final double z4 = z0 - 1.0 + 4.0 * G4;
         final double w4 = w0 - 1.0 + 4.0 * G4;
         // Work out the hashed gradient indices of the five simplex corners
-        final byte h0 = Maths.HashCoordinates(i, j, k, l, seed);
-        final byte h1 = Maths.HashCoordinates(i + i1, j + j1, k + k1, l + l1, seed);
-        final byte h2 = Maths.HashCoordinates(i + i2, j + j2, k + k2, l + l2, seed);
-        final byte h3 = Maths.HashCoordinates(i + i3, j + j3, k + k3, l + l3, seed);
-        final byte h4 = Maths.HashCoordinates(i + 1, j + 1, k + 1, l + 1, seed);
+        final int h0 = Maths.HashCoordinates(i, j, k, l, seed);
+        final int h1 = Maths.HashCoordinates(i + i1, j + j1, k + k1, l + l1, seed);
+        final int h2 = Maths.HashCoordinates(i + i2, j + j2, k + k2, l + l2, seed);
+        final int h3 = Maths.HashCoordinates(i + i3, j + j3, k + k3, l + l3, seed);
+        final int h4 = Maths.HashCoordinates(i + 1, j + 1, k + 1, l + 1, seed);
         
         final double[] g0 = { NoiseLookupTable.Gradient4D[h0][0], NoiseLookupTable.Gradient4D[h0][1],
                 NoiseLookupTable.Gradient4D[h0][2], NoiseLookupTable.Gradient4D[h0][3] };
@@ -454,7 +454,7 @@ public class SimplexNoise implements Noise {
             }
             
             if (t > 0.0) {
-                final byte h = Maths.HashCoordinates(intLoc[0], intLoc[1], intLoc[2], intLoc[3], seed);
+                final int h = Maths.HashCoordinates(intLoc[0], intLoc[1], intLoc[2], intLoc[3], seed);
                 double gr = 0.00;
                 for (int d = 0; d < 4; ++d) {
                     gr += NoiseLookupTable.Gradient4D[h][d] * u[d];
@@ -534,7 +534,7 @@ public class SimplexNoise implements Noise {
             }
             
             if (t > 0.0) {
-                final byte h = Maths.HashCoordinates(intLoc[0], intLoc[1], intLoc[2], intLoc[3], intLoc[4], intLoc[5],
+                final int h = Maths.HashCoordinates(intLoc[0], intLoc[1], intLoc[2], intLoc[3], intLoc[4], intLoc[5],
                         seed);
                 double gr = 0.00;
                 

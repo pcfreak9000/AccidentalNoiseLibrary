@@ -1,4 +1,4 @@
-package Enums;
+package enums;
 
 public enum FractalType {
     FractionalBrownianMotion(1, 0, 0), RidgedMulti(0.9, 2, 1), Billow(1, 0, 0), Multi(1, 0, 0),

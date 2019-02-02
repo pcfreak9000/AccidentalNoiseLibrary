@@ -1,4 +1,4 @@
-﻿package Implicit;
+﻿package implicit;
 
 public final class ImplicitRotateDomain extends ImplicitModuleBase {
     private final double[][] rotationMatrix = new double[3][3];
@@ -68,17 +68,17 @@ public final class ImplicitRotateDomain extends ImplicitModuleBase {
     }
 
     @Override
-    public double Get(final double x, final double y) {
-        final double d = this.Angle.Get(x, y) * 360.0 * 3.14159265 / 180.0;
+    public double get(final double x, final double y) {
+        final double d = this.Angle.get(x, y) * 360.0 * 3.14159265 / 180.0;
         final double cos2D = Math.cos(d);
         final double sin2D = Math.sin(d);
         final double nx = x * cos2D - y * sin2D;
         final double ny = y * cos2D + x * sin2D;
-        return this.Source.Get(nx, ny);
+        return this.Source.get(nx, ny);
     }
 
     @Override
-    public double Get(final double x, final double y, final double z) {
+    public double get(final double x, final double y, final double z) {
         this.CalculateRotMatrix(x, y, z);
         final double nx = (this.rotationMatrix[0][0] * x) + (this.rotationMatrix[1][0] * y)
                 + (this.rotationMatrix[2][0] * z);
@@ -86,11 +86,11 @@ public final class ImplicitRotateDomain extends ImplicitModuleBase {
                 + (this.rotationMatrix[2][1] * z);
         final double nz = (this.rotationMatrix[0][2] * x) + (this.rotationMatrix[1][2] * y)
                 + (this.rotationMatrix[2][2] * z);
-        return this.Source.Get(nx, ny, nz);
+        return this.Source.get(nx, ny, nz);
     }
 
     @Override
-    public double Get(final double x, final double y, final double z, final double w) {
+    public double get(final double x, final double y, final double z, final double w) {
         this.CalculateRotMatrix(x, y, z, w);
         final double nx = (this.rotationMatrix[0][0] * x) + (this.rotationMatrix[1][0] * y)
                 + (this.rotationMatrix[2][0] * z);
@@ -98,11 +98,11 @@ public final class ImplicitRotateDomain extends ImplicitModuleBase {
                 + (this.rotationMatrix[2][1] * z);
         final double nz = (this.rotationMatrix[0][2] * x) + (this.rotationMatrix[1][2] * y)
                 + (this.rotationMatrix[2][2] * z);
-        return this.Source.Get(nx, ny, nz, w);
+        return this.Source.get(nx, ny, nz, w);
     }
 
     @Override
-    public double Get(final double x, final double y, final double z, final double w, final double u, final double v) {
+    public double get(final double x, final double y, final double z, final double w, final double u, final double v) {
         this.CalculateRotMatrix(x, y, z, w, u, v);
         final double nx = (this.rotationMatrix[0][0] * x) + (this.rotationMatrix[1][0] * y)
                 + (this.rotationMatrix[2][0] * z);
@@ -110,15 +110,15 @@ public final class ImplicitRotateDomain extends ImplicitModuleBase {
                 + (this.rotationMatrix[2][1] * z);
         final double nz = (this.rotationMatrix[0][2] * x) + (this.rotationMatrix[1][2] * y)
                 + (this.rotationMatrix[2][2] * z);
-        return this.Source.Get(nx, ny, nz, w, u, v);
+        return this.Source.get(nx, ny, nz, w, u, v);
     }
 
     @Deprecated
     private void CalculateRotMatrix(final double x, final double y) {
-        final double angle = this.Angle.Get(x, y) * 360.0 * Math.PI / 180.0;
-        final double ax = this.X.Get(x, y);
-        final double ay = this.Y.Get(x, y);
-        final double az = this.Z.Get(x, y);
+        final double angle = this.Angle.get(x, y) * 360.0 * Math.PI / 180.0;
+        final double ax = this.X.get(x, y);
+        final double ay = this.Y.get(x, y);
+        final double az = this.Z.get(x, y);
 
         final double cosangle = Math.cos(angle);
         final double sinangle = Math.sin(angle);
@@ -137,10 +137,10 @@ public final class ImplicitRotateDomain extends ImplicitModuleBase {
     }
 
     private void CalculateRotMatrix(final double x, final double y, final double z) {
-        final double angle = this.Angle.Get(x, y, z) * 360.0 * Math.PI / 180.0;
-        final double ax = this.X.Get(x, y, z);
-        final double ay = this.Y.Get(x, y, z);
-        final double az = this.Z.Get(x, y, z);
+        final double angle = this.Angle.get(x, y, z) * 360.0 * Math.PI / 180.0;
+        final double ax = this.X.get(x, y, z);
+        final double ay = this.Y.get(x, y, z);
+        final double az = this.Z.get(x, y, z);
 
         final double cosangle = Math.cos(angle);
         final double sinangle = Math.sin(angle);
@@ -159,10 +159,10 @@ public final class ImplicitRotateDomain extends ImplicitModuleBase {
     }
 
     private void CalculateRotMatrix(final double x, final double y, final double z, final double w) {
-        final double angle = this.Angle.Get(x, y, z, w) * 360.0 * Math.PI / 180.0;
-        final double ax = this.X.Get(x, y, z, w);
-        final double ay = this.Y.Get(x, y, z, w);
-        final double az = this.Z.Get(x, y, z, w);
+        final double angle = this.Angle.get(x, y, z, w) * 360.0 * Math.PI / 180.0;
+        final double ax = this.X.get(x, y, z, w);
+        final double ay = this.Y.get(x, y, z, w);
+        final double az = this.Z.get(x, y, z, w);
 
         final double cosangle = Math.cos(angle);
         final double sinangle = Math.sin(angle);
@@ -182,10 +182,10 @@ public final class ImplicitRotateDomain extends ImplicitModuleBase {
 
     private void CalculateRotMatrix(final double x, final double y, final double z, final double w, final double u,
             final double v) {
-        final double angle = this.Angle.Get(x, y, z, w, u, v) * 360.0 * Math.PI / 180.0;
-        final double ax = this.X.Get(x, y, z, w, u, v);
-        final double ay = this.Y.Get(x, y, z, w, u, v);
-        final double az = this.Z.Get(x, y, z, w, u, v);
+        final double angle = this.Angle.get(x, y, z, w, u, v) * 360.0 * Math.PI / 180.0;
+        final double ax = this.X.get(x, y, z, w, u, v);
+        final double ay = this.Y.get(x, y, z, w, u, v);
+        final double az = this.Z.get(x, y, z, w, u, v);
 
         final double cosangle = Math.cos(angle);
         final double sinangle = Math.sin(angle);

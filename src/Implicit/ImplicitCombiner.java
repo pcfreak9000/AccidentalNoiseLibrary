@@ -1,9 +1,9 @@
-﻿package Implicit;
+﻿package implicit;
 
 import java.util.HashSet;
 import java.util.Set;
 
-import Enums.CombinerType;
+import enums.CombinerType;
 
 public final class ImplicitCombiner extends ImplicitModuleBase {
     private final Set<ImplicitModuleBase> sources = new HashSet<>();
@@ -35,7 +35,7 @@ public final class ImplicitCombiner extends ImplicitModuleBase {
     }
 
     @Override
-    public double Get(final double x, final double y) {
+    public double get(final double x, final double y) {
         switch (this.CombinerType) {
         case Add:
             return this.AddGet(x, y);
@@ -53,7 +53,7 @@ public final class ImplicitCombiner extends ImplicitModuleBase {
     }
 
     @Override
-    public double Get(final double x, final double y, final double z) {
+    public double get(final double x, final double y, final double z) {
         switch (this.CombinerType) {
         case Add:
             return this.AddGet(x, y, z);
@@ -71,7 +71,7 @@ public final class ImplicitCombiner extends ImplicitModuleBase {
     }
 
     @Override
-    public double Get(final double x, final double y, final double z, final double w) {
+    public double get(final double x, final double y, final double z, final double w) {
         switch (this.CombinerType) {
         case Add:
             return this.AddGet(x, y, z, w);
@@ -89,7 +89,7 @@ public final class ImplicitCombiner extends ImplicitModuleBase {
     }
 
     @Override
-    public double Get(final double x, final double y, final double z, final double w, final double u, final double v) {
+    public double get(final double x, final double y, final double z, final double w, final double u, final double v) {
         switch (this.CombinerType) {
         case Add:
             return this.AddGet(x, y, z, w, u, v);
@@ -109,7 +109,7 @@ public final class ImplicitCombiner extends ImplicitModuleBase {
     private double AddGet(final double x, final double y) {
         double d = 0;
         for (final ImplicitModuleBase imb : this.sources) {
-            d += imb.Get(x, y);
+            d += imb.get(x, y);
         }
         return d;
     }
@@ -117,7 +117,7 @@ public final class ImplicitCombiner extends ImplicitModuleBase {
     private double AddGet(final double x, final double y, final double z) {
         double d = 0;
         for (final ImplicitModuleBase imb : this.sources) {
-            d += imb.Get(x, y, z);
+            d += imb.get(x, y, z);
         }
         return d;
     }
@@ -125,7 +125,7 @@ public final class ImplicitCombiner extends ImplicitModuleBase {
     private double AddGet(final double x, final double y, final double z, final double w) {
         double d = 0;
         for (final ImplicitModuleBase imb : this.sources) {
-            d += imb.Get(x, y, z, w);
+            d += imb.get(x, y, z, w);
         }
         return d;
     }
@@ -134,7 +134,7 @@ public final class ImplicitCombiner extends ImplicitModuleBase {
             final double v) {
         double d = 0;
         for (final ImplicitModuleBase imb : this.sources) {
-            d += imb.Get(x, y, z, w, u, v);
+            d += imb.get(x, y, z, w, u, v);
         }
         return d;
     }
@@ -142,7 +142,7 @@ public final class ImplicitCombiner extends ImplicitModuleBase {
     private double MultiplyGet(final double x, final double y) {
         double d = 1;
         for (final ImplicitModuleBase imb : this.sources) {
-            d *= imb.Get(x, y);
+            d *= imb.get(x, y);
         }
         return d;
     }
@@ -150,7 +150,7 @@ public final class ImplicitCombiner extends ImplicitModuleBase {
     private double MultiplyGet(final double x, final double y, final double z) {
         double d = 1;
         for (final ImplicitModuleBase imb : this.sources) {
-            d *= imb.Get(x, y, z);
+            d *= imb.get(x, y, z);
         }
         return d;
     }
@@ -158,7 +158,7 @@ public final class ImplicitCombiner extends ImplicitModuleBase {
     private double MultiplyGet(final double x, final double y, final double z, final double w) {
         double d = 1;
         for (final ImplicitModuleBase imb : this.sources) {
-            d *= imb.Get(x, y, z, w);
+            d *= imb.get(x, y, z, w);
         }
         return d;
     }
@@ -167,7 +167,7 @@ public final class ImplicitCombiner extends ImplicitModuleBase {
             final double v) {
         double d = 1;
         for (final ImplicitModuleBase imb : this.sources) {
-            d *= imb.Get(x, y, z, w, u, v);
+            d *= imb.get(x, y, z, w, u, v);
         }
         return d;
     }
@@ -176,7 +176,7 @@ public final class ImplicitCombiner extends ImplicitModuleBase {
     private double MinGet(final double x, final double y) {
         double d = Double.POSITIVE_INFINITY;
         for (final ImplicitModuleBase imb : this.sources) {
-            d = Math.min(d, imb.Get(x, y));
+            d = Math.min(d, imb.get(x, y));
         }
         return d;
     }
@@ -184,7 +184,7 @@ public final class ImplicitCombiner extends ImplicitModuleBase {
     private double MinGet(final double x, final double y, final double z) {
         double d = Double.POSITIVE_INFINITY;
         for (final ImplicitModuleBase imb : this.sources) {
-            d = Math.min(d, imb.Get(x, y, z));
+            d = Math.min(d, imb.get(x, y, z));
         }
         return d;
     }
@@ -192,7 +192,7 @@ public final class ImplicitCombiner extends ImplicitModuleBase {
     private double MinGet(final double x, final double y, final double z, final double w) {
         double d = Double.POSITIVE_INFINITY;
         for (final ImplicitModuleBase imb : this.sources) {
-            d = Math.min(d, imb.Get(x, y, z, w));
+            d = Math.min(d, imb.get(x, y, z, w));
         }
         return d;
     }
@@ -201,7 +201,7 @@ public final class ImplicitCombiner extends ImplicitModuleBase {
             final double v) {
         double d = Double.POSITIVE_INFINITY;
         for (final ImplicitModuleBase imb : this.sources) {
-            d = Math.min(d, imb.Get(x, y, z, w, u, v));
+            d = Math.min(d, imb.get(x, y, z, w, u, v));
         }
         return d;
     }
@@ -209,7 +209,7 @@ public final class ImplicitCombiner extends ImplicitModuleBase {
     private double MaxGet(final double x, final double y) {
         double d = Double.NEGATIVE_INFINITY;
         for (final ImplicitModuleBase imb : this.sources) {
-            d = Math.max(d, imb.Get(x, y));
+            d = Math.max(d, imb.get(x, y));
         }
         return d;
     }
@@ -217,7 +217,7 @@ public final class ImplicitCombiner extends ImplicitModuleBase {
     private double MaxGet(final double x, final double y, final double z) {
         double d = Double.NEGATIVE_INFINITY;
         for (final ImplicitModuleBase imb : this.sources) {
-            d = Math.max(d, imb.Get(x, y, z));
+            d = Math.max(d, imb.get(x, y, z));
         }
         return d;
     }
@@ -225,7 +225,7 @@ public final class ImplicitCombiner extends ImplicitModuleBase {
     private double MaxGet(final double x, final double y, final double z, final double w) {
         double d = Double.NEGATIVE_INFINITY;
         for (final ImplicitModuleBase imb : this.sources) {
-            d = Math.max(d, imb.Get(x, y, z, w));
+            d = Math.max(d, imb.get(x, y, z, w));
         }
         return d;
     }
@@ -234,7 +234,7 @@ public final class ImplicitCombiner extends ImplicitModuleBase {
             final double v) {
         double d = Double.NEGATIVE_INFINITY;
         for (final ImplicitModuleBase imb : this.sources) {
-            d = Math.max(d, imb.Get(x, y, z, w, u, v));
+            d = Math.max(d, imb.get(x, y, z, w, u, v));
         }
         return d;
     }

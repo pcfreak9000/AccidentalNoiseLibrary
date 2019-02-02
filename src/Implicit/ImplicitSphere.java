@@ -1,4 +1,4 @@
-﻿package Implicit;
+﻿package implicit;
 
 public final class ImplicitSphere extends ImplicitModuleBase {
     public ImplicitSphere(final double xCenter, final double yCenter, final double zCenter, final double wCenter,
@@ -83,11 +83,11 @@ public final class ImplicitSphere extends ImplicitModuleBase {
     }
 
     @Override
-    public double Get(final double x, final double y) {
-        final double dx = x - this.XCenter.Get(x, y);
-        final double dy = y - this.YCenter.Get(x, y);
+    public double get(final double x, final double y) {
+        final double dx = x - this.XCenter.get(x, y);
+        final double dy = y - this.YCenter.get(x, y);
         final double len = Math.sqrt(dx * dx + dy * dy);
-        final double rad = this.Radius.Get(x, y);
+        final double rad = this.Radius.get(x, y);
         double i = (rad - len) / rad;
         if (i < 0) {
             i = 0;
@@ -100,12 +100,12 @@ public final class ImplicitSphere extends ImplicitModuleBase {
     }
 
     @Override
-    public double Get(final double x, final double y, final double z) {
-        final double dx = x - this.XCenter.Get(x, y, z);
-        final double dy = y - this.YCenter.Get(x, y, z);
-        final double dz = z - this.ZCenter.Get(x, y, z);
+    public double get(final double x, final double y, final double z) {
+        final double dx = x - this.XCenter.get(x, y, z);
+        final double dy = y - this.YCenter.get(x, y, z);
+        final double dz = z - this.ZCenter.get(x, y, z);
         final double len = Math.sqrt(dx * dx + dy * dy + dz * dz);
-        final double rad = this.Radius.Get(x, y, z);
+        final double rad = this.Radius.get(x, y, z);
         double i = (rad - len) / rad;
         if (i < 0) {
             i = 0;
@@ -118,13 +118,13 @@ public final class ImplicitSphere extends ImplicitModuleBase {
     }
 
     @Override
-    public double Get(final double x, final double y, final double z, final double w) {
-        final double dx = x - this.XCenter.Get(x, y, z, w);
-        final double dy = y - this.YCenter.Get(x, y, z, w);
-        final double dz = z - this.ZCenter.Get(x, y, z, w);
-        final double dw = w - this.WCenter.Get(x, y, z, w);
+    public double get(final double x, final double y, final double z, final double w) {
+        final double dx = x - this.XCenter.get(x, y, z, w);
+        final double dy = y - this.YCenter.get(x, y, z, w);
+        final double dz = z - this.ZCenter.get(x, y, z, w);
+        final double dw = w - this.WCenter.get(x, y, z, w);
         final double len = Math.sqrt(dx * dx + dy * dy + dz * dz + dw * dw);
-        final double rad = this.Radius.Get(x, y, z, w);
+        final double rad = this.Radius.get(x, y, z, w);
         double i = (rad - len) / rad;
         if (i < 0) {
             i = 0;
@@ -137,15 +137,15 @@ public final class ImplicitSphere extends ImplicitModuleBase {
     }
 
     @Override
-    public double Get(final double x, final double y, final double z, final double w, final double u, final double v) {
-        final double dx = x - this.XCenter.Get(x, y, z, w, u, v);
-        final double dy = y - this.YCenter.Get(x, y, z, w, u, v);
-        final double dz = z - this.ZCenter.Get(x, y, z, w, u, v);
-        final double dw = w - this.WCenter.Get(x, y, z, w, u, v);
-        final double du = u - this.UCenter.Get(x, y, z, w, u, v);
-        final double dv = v - this.VCenter.Get(x, y, z, w, u, v);
+    public double get(final double x, final double y, final double z, final double w, final double u, final double v) {
+        final double dx = x - this.XCenter.get(x, y, z, w, u, v);
+        final double dy = y - this.YCenter.get(x, y, z, w, u, v);
+        final double dz = z - this.ZCenter.get(x, y, z, w, u, v);
+        final double dw = w - this.WCenter.get(x, y, z, w, u, v);
+        final double du = u - this.UCenter.get(x, y, z, w, u, v);
+        final double dv = v - this.VCenter.get(x, y, z, w, u, v);
         final double len = Math.sqrt(dx * dx + dy * dy + dz * dz + dw * dw + du * du + dv * dv);
-        final double rad = this.Radius.Get(x, y, z, w, u, v);
+        final double rad = this.Radius.get(x, y, z, w, u, v);
         double i = (rad - len) / rad;
         if (i < 0) {
             i = 0;

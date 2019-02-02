@@ -1,4 +1,4 @@
-﻿package Implicit;
+﻿package implicit;
 
 import util.Maths;
 
@@ -40,34 +40,34 @@ public final class ImplicitBlend extends ImplicitModuleBase {
     }
     
     @Override
-    public double Get(final double x, final double y) {
-        final double v1 = this.Low.Get(x, y);
-        final double v2 = this.High.Get(x, y);
-        final double blend = (this.Source.Get(x, y) + 1.0) * 0.5;
+    public double get(final double x, final double y) {
+        final double v1 = this.Low.get(x, y);
+        final double v2 = this.High.get(x, y);
+        final double blend = (this.Source.get(x, y) + 1.0) * 0.5;
         return Maths.Lerp(blend, v1, v2);
     }
     
     @Override
-    public double Get(final double x, final double y, final double z) {
-        final double v1 = this.Low.Get(x, y, z);
-        final double v2 = this.High.Get(x, y, z);
-        final double blend = this.Source.Get(x, y, z);
+    public double get(final double x, final double y, final double z) {
+        final double v1 = this.Low.get(x, y, z);
+        final double v2 = this.High.get(x, y, z);
+        final double blend = this.Source.get(x, y, z);
         return Maths.Lerp(blend, v1, v2);
     }
     
     @Override
-    public double Get(final double x, final double y, final double z, final double w) {
-        final double v1 = this.Low.Get(x, y, z, w);
-        final double v2 = this.High.Get(x, y, z, w);
-        final double blend = this.Source.Get(x, y, z, w);
+    public double get(final double x, final double y, final double z, final double w) {
+        final double v1 = this.Low.get(x, y, z, w);
+        final double v2 = this.High.get(x, y, z, w);
+        final double blend = this.Source.get(x, y, z, w);
         return Maths.Lerp(blend, v1, v2);
     }
     
     @Override
-    public double Get(final double x, final double y, final double z, final double w, final double u, final double v) {
-        final double v1 = this.Low.Get(x, y, z, w, u, v);
-        final double v2 = this.High.Get(x, y, z, w, u, v);
-        final double blend = this.Source.Get(x, y, z, w, u, v);
+    public double get(final double x, final double y, final double z, final double w, final double u, final double v) {
+        final double v1 = this.Low.get(x, y, z, w, u, v);
+        final double v2 = this.High.get(x, y, z, w, u, v);
+        final double blend = this.Source.get(x, y, z, w, u, v);
         return Maths.Lerp(blend, v1, v2);
     }
 }

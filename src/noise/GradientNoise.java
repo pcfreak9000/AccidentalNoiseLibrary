@@ -1,6 +1,6 @@
 package noise;
 
-import Enums.InterpolationType;
+import enums.InterpolationType;
 import util.Maths;
 
 public class GradientNoise extends InterpolatedNoise {
@@ -88,7 +88,7 @@ public class GradientNoise extends InterpolatedNoise {
     
     @Override
     protected double internalNoise(final double x, final double y, final double ix, final double iy, final int seed) {
-        final byte hash = Maths.HashCoordinates(ix, iy, seed);
+        final int hash = Maths.HashCoordinates(ix, iy, seed);
         
         final double dx = x - ix;
         final double dy = y - iy;
@@ -99,7 +99,7 @@ public class GradientNoise extends InterpolatedNoise {
     @Override
     protected double internalNoise(final double x, final double y, final double z, final double ix, final double iy,
             final double iz, final int seed) {
-        final byte hash = Maths.HashCoordinates(ix, iy, iz, seed);
+        final int hash = Maths.HashCoordinates(ix, iy, iz, seed);
         
         final double dx = x - ix;
         final double dy = y - iy;
@@ -112,7 +112,7 @@ public class GradientNoise extends InterpolatedNoise {
     @Override
     protected double internalNoise(final double x, final double y, final double z, final double w, final double ix,
             final double iy, final double iz, final double iw, final int seed) {
-        final byte hash = Maths.HashCoordinates(ix, iy, iz, iw, seed);
+        final int hash = Maths.HashCoordinates(ix, iy, iz, iw, seed);
         
         final double dx = x - ix;
         final double dy = y - iy;
@@ -127,7 +127,7 @@ public class GradientNoise extends InterpolatedNoise {
     protected double internalNoise(final double x, final double y, final double z, final double w, final double u,
             final double v, final double ix, final double iy, final double iz, final double iw, final double iu,
             final double iv, final int seed) {
-        final byte hash = Maths.HashCoordinates(ix, iy, iz, iw, iu, iv, seed);
+        final int hash = Maths.HashCoordinates(ix, iy, iz, iw, iu, iv, seed);
         
         final double dx = x - ix;
         final double dy = y - iy;

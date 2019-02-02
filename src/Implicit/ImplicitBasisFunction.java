@@ -1,9 +1,9 @@
-﻿package Implicit;
+﻿package implicit;
 
 import java.util.Random;
 
-import Enums.BasisType;
-import Enums.InterpolationType;
+import enums.BasisType;
+import enums.InterpolationType;
 import noise.Noise;
 
 public final class ImplicitBasisFunction extends ImplicitModuleBase {
@@ -30,13 +30,13 @@ public final class ImplicitBasisFunction extends ImplicitModuleBase {
         this.setBasisType(basisType);
         this.setInterpolationType(interpolationType);
         //TODO seed make long?
-        this.setSeed((int) System.currentTimeMillis());
+        this.setSeed((int) System.nanoTime());
     }
     
     @Override
     public void setSeed(final int value) {
         this.seed = value;
-        final Random random = new Random(value);
+        final Random random = new Random(value*14);
         
         double ax = random.nextDouble();
         double ay = random.nextDouble();
@@ -76,7 +76,7 @@ public final class ImplicitBasisFunction extends ImplicitModuleBase {
     }
     
     @Override
-    public double Get(final double x, final double y) {
+    public double get(final double x, final double y) {
         final double nx = x * this.cos2D - y * this.sin2D;
         final double ny = y * this.cos2D + x * this.sin2D;
         
@@ -84,7 +84,7 @@ public final class ImplicitBasisFunction extends ImplicitModuleBase {
     }
     
     @Override
-    public double Get(final double x, final double y, final double z) {
+    public double get(final double x, final double y, final double z) {
         final double nx = (this.rotationMatrix[0][0] * x) + (this.rotationMatrix[1][0] * y)
                 + (this.rotationMatrix[2][0] * z);
         final double ny = (this.rotationMatrix[0][1] * x) + (this.rotationMatrix[1][1] * y)
@@ -96,7 +96,7 @@ public final class ImplicitBasisFunction extends ImplicitModuleBase {
     }
     
     @Override
-    public double Get(final double x, final double y, final double z, final double w) {
+    public double get(final double x, final double y, final double z, final double w) {
         final double nx = (this.rotationMatrix[0][0] * x) + (this.rotationMatrix[1][0] * y)
                 + (this.rotationMatrix[2][0] * z);
         final double ny = (this.rotationMatrix[0][1] * x) + (this.rotationMatrix[1][1] * y)
@@ -108,7 +108,7 @@ public final class ImplicitBasisFunction extends ImplicitModuleBase {
     }
     
     @Override
-    public double Get(final double x, final double y, final double z, final double w, final double u, final double v) {
+    public double get(final double x, final double y, final double z, final double w, final double u, final double v) {
         final double nx = (this.rotationMatrix[0][0] * x) + (this.rotationMatrix[1][0] * y)
                 + (this.rotationMatrix[2][0] * z);
         final double ny = (this.rotationMatrix[0][1] * x) + (this.rotationMatrix[1][1] * y)

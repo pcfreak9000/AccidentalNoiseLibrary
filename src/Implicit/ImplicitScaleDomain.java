@@ -1,4 +1,4 @@
-﻿package Implicit;
+﻿package implicit;
 
 public final class ImplicitScaleDomain extends ImplicitModuleBase {
     public ImplicitScaleDomain(final ImplicitModuleBase source, final double xScale, final double yScale,
@@ -93,26 +93,26 @@ public final class ImplicitScaleDomain extends ImplicitModuleBase {
     }
 
     @Override
-    public double Get(final double x, final double y) {
-        return this.Source.Get(x * this.XScale.Get(x, y), y * this.YScale.Get(x, y));
+    public double get(final double x, final double y) {
+        return this.Source.get(x * this.XScale.get(x, y), y * this.YScale.get(x, y));
     }
 
     @Override
-    public double Get(final double x, final double y, final double z) {
-        return this.Source.Get(x * this.XScale.Get(x, y, z), y * this.YScale.Get(x, y, z),
-                z * this.ZScale.Get(x, y, z));
+    public double get(final double x, final double y, final double z) {
+        return this.Source.get(x * this.XScale.get(x, y, z), y * this.YScale.get(x, y, z),
+                z * this.ZScale.get(x, y, z));
     }
 
     @Override
-    public double Get(final double x, final double y, final double z, final double w) {
-        return this.Source.Get(x * this.XScale.Get(x, y, z, w), y * this.YScale.Get(x, y, z, w),
-                z * this.ZScale.Get(x, y, z, w), w * this.WScale.Get(x, y, z, w));
+    public double get(final double x, final double y, final double z, final double w) {
+        return this.Source.get(x * this.XScale.get(x, y, z, w), y * this.YScale.get(x, y, z, w),
+                z * this.ZScale.get(x, y, z, w), w * this.WScale.get(x, y, z, w));
     }
 
     @Override
-    public double Get(final double x, final double y, final double z, final double w, final double u, final double v) {
-        return this.Source.Get(x * this.XScale.Get(x, y, z, w, u, v), y * this.YScale.Get(x, y, z, w, u, v),
-                z * this.ZScale.Get(x, y, z, w, u, v), w * this.WScale.Get(x, y, z, w, u, v),
-                u * this.UScale.Get(x, y, z, w, u, v), v * this.VScale.Get(x, y, z, w, u, v));
+    public double get(final double x, final double y, final double z, final double w, final double u, final double v) {
+        return this.Source.get(x * this.XScale.get(x, y, z, w, u, v), y * this.YScale.get(x, y, z, w, u, v),
+                z * this.ZScale.get(x, y, z, w, u, v), w * this.WScale.get(x, y, z, w, u, v),
+                u * this.UScale.get(x, y, z, w, u, v), v * this.VScale.get(x, y, z, w, u, v));
     }
 }

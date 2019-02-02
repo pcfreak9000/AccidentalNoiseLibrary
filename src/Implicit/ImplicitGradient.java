@@ -1,4 +1,4 @@
-﻿package Implicit;
+﻿package implicit;
 
 public final class ImplicitGradient extends ImplicitModuleBase {
     private double gradientX0;
@@ -84,7 +84,7 @@ public final class ImplicitGradient extends ImplicitModuleBase {
     }
 
     @Override
-    public double Get(final double x, final double y) {
+    public double get(final double x, final double y) {
         final double dx = x - this.gradientX0;
         final double dy = y - this.gradientY0;
         double dp = dx * this.gradientX1 + dy * this.gradientY1;
@@ -93,7 +93,7 @@ public final class ImplicitGradient extends ImplicitModuleBase {
     }
 
     @Override
-    public double Get(final double x, final double y, final double z) {
+    public double get(final double x, final double y, final double z) {
         final double dx = x - this.gradientX0;
         final double dy = y - this.gradientY0;
         final double dz = z - this.gradientZ0;
@@ -103,7 +103,7 @@ public final class ImplicitGradient extends ImplicitModuleBase {
     }
 
     @Override
-    public double Get(final double x, final double y, final double z, final double w) {
+    public double get(final double x, final double y, final double z, final double w) {
         final double dx = x - this.gradientX0;
         final double dy = y - this.gradientY0;
         final double dz = z - this.gradientZ0;
@@ -114,7 +114,7 @@ public final class ImplicitGradient extends ImplicitModuleBase {
     }
 
     @Override
-    public double Get(final double x, final double y, final double z, final double w, final double u, final double v) {
+    public double get(final double x, final double y, final double z, final double w, final double u, final double v) {
         final double dx = x - this.gradientX0;
         final double dy = y - this.gradientY0;
         final double dz = z - this.gradientZ0;

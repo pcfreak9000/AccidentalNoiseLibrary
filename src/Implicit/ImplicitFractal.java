@@ -1,13 +1,14 @@
-﻿package Implicit;
+﻿package implicit;
 
-import Enums.BasisType;
-import Enums.FractalType;
-import Enums.InterpolationType;
+import enums.BasisType;
+import enums.FractalType;
+import enums.InterpolationType;
 import util.Maths;
 
 public final class ImplicitFractal extends ImplicitModuleBase {
+    //default basisFunctions of this Fractal. reset() will reset sources to the contents of this array
     private final ImplicitBasisFunction[] basisFunctions = new ImplicitBasisFunction[ImplicitModuleBase.MAX_SOURCES];
-    
+    //Noise functions that will be used for each octave
     private final ImplicitModuleBase[] sources = new ImplicitModuleBase[ImplicitModuleBase.MAX_SOURCES];
     
     private final double[] expArray = new double[ImplicitModuleBase.MAX_SOURCES];
@@ -57,48 +58,44 @@ public final class ImplicitFractal extends ImplicitModuleBase {
         return this.type;
     }
     
-    public void setFractalType(final FractalType value) {
+    public ImplicitFractal setFractalType(final FractalType value) {
         this.type = value;
-        this.setH(value.h);
-        this.setGain(value.gain);
-        this.setOffset(value.offset);
+        this.h = (value.h);
+        this.gain = (value.gain);
+        this.offset = (value.offset);
         switch (this.type) {
         case FractionalBrownianMotion:
-            
             this.FractionalBrownianMotion_CalculateWeights();
             break;
         case RidgedMulti:
-            
             this.RidgedMulti_CalculateWeights();
             break;
         case Billow:
-            
             this.Billow_CalculateWeights();
             break;
         case Multi:
-            
             this.Multi_CalculateWeights();
             break;
         case HybridMulti:
-            
             this.HybridMulti_CalculateWeights();
             break;
         default:
-            
             this.FractionalBrownianMotion_CalculateWeights();
             break;
         }
+        return this;
     }
     
     public int getOctaves() {
         return this.octaves;
     }
     
-    public void setOctaves(int value) {
+    public ImplicitFractal setOctaves(int value) {
         if (value >= ImplicitModuleBase.MAX_SOURCES) {
             value = ImplicitModuleBase.MAX_SOURCES - 1;
         }
         this.octaves = value;
+        return this;
     }
     
     public void SetAllSourceTypes(final BasisType newBasisType, final InterpolationType newInterpolationType) {
@@ -151,44 +148,22 @@ public final class ImplicitFractal extends ImplicitModuleBase {
         return this.frequency;
     }
     
-    public void setFrequency(final double frequency) {
+    public ImplicitFractal setFrequency(final double frequency) {
         this.frequency = frequency;
+        return this;
     }
     
     public double getLacunarity() {
         return this.lacunarity;
     }
     
-    public void setLacunarity(final double lacunarity) {
+    public ImplicitFractal setLacunarity(final double lacunarity) {
         this.lacunarity = lacunarity;
-    }
-    
-    public double getGain() {
-        return this.gain;
-    }
-    
-    public void setGain(final double gain) {
-        this.gain = gain;
-    }
-    
-    public double getOffset() {
-        return this.offset;
-    }
-    
-    public void setOffset(final double offset) {
-        this.offset = offset;
-    }
-    
-    public double getH() {
-        return this.h;
-    }
-    
-    public void setH(final double h) {
-        this.h = h;
+        return this;
     }
     
     @Override
-    public double Get(final double x, final double y) {
+    public double get(final double x, final double y) {
         double v;
         switch (this.type) {
         case FractionalBrownianMotion:
@@ -214,7 +189,7 @@ public final class ImplicitFractal extends ImplicitModuleBase {
     }
     
     @Override
-    public double Get(final double x, final double y, final double z) {
+    public double get(final double x, final double y, final double z) {
         double val;
         switch (this.type) {
         case FractionalBrownianMotion:
@@ -240,7 +215,7 @@ public final class ImplicitFractal extends ImplicitModuleBase {
     }
     
     @Override
-    public double Get(final double x, final double y, final double z, final double w) {
+    public double get(final double x, final double y, final double z, final double w) {
         double val;
         switch (this.type) {
         case FractionalBrownianMotion:
@@ -266,7 +241,7 @@ public final class ImplicitFractal extends ImplicitModuleBase {
     }
     
     @Override
-    public double Get(final double x, final double y, final double z, final double w, final double u, final double v) {
+    public double get(final double x, final double y, final double z, final double w, final double u, final double v) {
         double val;
         switch (this.type) {
         case FractionalBrownianMotion:
@@ -428,7 +403,7 @@ public final class ImplicitFractal extends ImplicitModuleBase {
         y *= this.frequency;
         
         for (int i = 0; i < this.octaves; ++i) {
-            final double signal = this.sources[i].Get(x, y) * this.expArray[i];
+            final double signal = this.sources[i].get(x, y) * this.expArray[i];
             value += signal;
             x *= this.lacunarity;
             y *= this.lacunarity;
@@ -444,7 +419,7 @@ public final class ImplicitFractal extends ImplicitModuleBase {
         z *= this.frequency;
         
         for (int i = 0; i < this.octaves; ++i) {
-            final double signal = this.sources[i].Get(x, y, z) * this.expArray[i];
+            final double signal = this.sources[i].get(x, y, z) * this.expArray[i];
             value += signal;
             x *= this.lacunarity;
             y *= this.lacunarity;
@@ -462,7 +437,7 @@ public final class ImplicitFractal extends ImplicitModuleBase {
         w *= this.frequency;
         
         for (int i = 0; i < this.octaves; ++i) {
-            final double signal = this.sources[i].Get(x, y, z, w) * this.expArray[i];
+            final double signal = this.sources[i].get(x, y, z, w) * this.expArray[i];
             value += signal;
             x *= this.lacunarity;
             y *= this.lacunarity;
@@ -483,7 +458,7 @@ public final class ImplicitFractal extends ImplicitModuleBase {
         v *= this.frequency;
         
         for (int i = 0; i < this.octaves; ++i) {
-            final double signal = this.sources[i].Get(x, y, z, w, u, v) * this.expArray[i];
+            final double signal = this.sources[i].get(x, y, z, w, u, v) * this.expArray[i];
             value += signal;
             x *= this.lacunarity;
             y *= this.lacunarity;
@@ -502,7 +477,7 @@ public final class ImplicitFractal extends ImplicitModuleBase {
         y *= this.frequency;
         
         for (int i = 0; i < this.octaves; ++i) {
-            value *= this.sources[i].Get(x, y) * this.expArray[i] + 1.0;
+            value *= this.sources[i].get(x, y) * this.expArray[i] + 1.0;
             x *= this.lacunarity;
             y *= this.lacunarity;
             
@@ -519,7 +494,7 @@ public final class ImplicitFractal extends ImplicitModuleBase {
         w *= this.frequency;
         
         for (int i = 0; i < this.octaves; ++i) {
-            value *= this.sources[i].Get(x, y, z, w) * this.expArray[i] + 1.0;
+            value *= this.sources[i].get(x, y, z, w) * this.expArray[i] + 1.0;
             x *= this.lacunarity;
             y *= this.lacunarity;
             z *= this.lacunarity;
@@ -536,7 +511,7 @@ public final class ImplicitFractal extends ImplicitModuleBase {
         z *= this.frequency;
         
         for (int i = 0; i < this.octaves; ++i) {
-            value *= this.sources[i].Get(x, y, z) * this.expArray[i] + 1.0;
+            value *= this.sources[i].get(x, y, z) * this.expArray[i] + 1.0;
             x *= this.lacunarity;
             y *= this.lacunarity;
             z *= this.lacunarity;
@@ -555,7 +530,7 @@ public final class ImplicitFractal extends ImplicitModuleBase {
         v *= this.frequency;
         
         for (int i = 0; i < this.octaves; ++i) {
-            value *= this.sources[i].Get(x, y, z, w, u, v) * this.expArray[i] + 1.00;
+            value *= this.sources[i].get(x, y, z, w, u, v) * this.expArray[i] + 1.00;
             x *= this.lacunarity;
             y *= this.lacunarity;
             z *= this.lacunarity;
@@ -573,7 +548,7 @@ public final class ImplicitFractal extends ImplicitModuleBase {
         y *= this.frequency;
         
         for (int i = 0; i < this.octaves; ++i) {
-            double signal = this.sources[i].Get(x, y);
+            double signal = this.sources[i].get(x, y);
             signal = 2.0 * Math.abs(signal) - 1.0;
             value += signal * this.expArray[i];
             
@@ -594,7 +569,7 @@ public final class ImplicitFractal extends ImplicitModuleBase {
         w *= this.frequency;
         
         for (int i = 0; i < this.octaves; ++i) {
-            double signal = this.sources[i].Get(x, y, z, w);
+            double signal = this.sources[i].get(x, y, z, w);
             signal = 2.0 * Math.abs(signal) - 1.0;
             value += signal * this.expArray[i];
             
@@ -615,7 +590,7 @@ public final class ImplicitFractal extends ImplicitModuleBase {
         z *= this.frequency;
         
         for (int i = 0; i < this.octaves; ++i) {
-            double signal = this.sources[i].Get(x, y, z);
+            double signal = this.sources[i].get(x, y, z);
             signal = 2.0 * Math.abs(signal) - 1.0;
             value += signal * this.expArray[i];
             
@@ -638,7 +613,7 @@ public final class ImplicitFractal extends ImplicitModuleBase {
         v *= this.frequency;
         
         for (int i = 0; i < this.octaves; ++i) {
-            double signal = this.sources[i].Get(x, y, z, w, u, v);
+            double signal = this.sources[i].get(x, y, z, w, u, v);
             signal = 2.0 * Math.abs(signal) - 1.0;
             value += signal * this.expArray[i];
             
@@ -660,7 +635,7 @@ public final class ImplicitFractal extends ImplicitModuleBase {
         y *= this.frequency;
         
         for (int i = 0; i < this.octaves; ++i) {
-            double signal = this.sources[i].Get(x, y);
+            double signal = this.sources[i].get(x, y);
             signal = this.offset - Math.abs(signal);
             signal *= signal;
             result += signal * this.expArray[i];
@@ -681,7 +656,7 @@ public final class ImplicitFractal extends ImplicitModuleBase {
         w *= this.frequency;
         
         for (int i = 0; i < this.octaves; ++i) {
-            double signal = this.sources[i].Get(x, y, z, w);
+            double signal = this.sources[i].get(x, y, z, w);
             signal = this.offset - Math.abs(signal);
             signal *= signal;
             result += signal * this.expArray[i];
@@ -702,7 +677,7 @@ public final class ImplicitFractal extends ImplicitModuleBase {
         z *= this.frequency;
         
         for (int i = 0; i < this.octaves; ++i) {
-            double signal = this.sources[i].Get(x, y, z);
+            double signal = this.sources[i].get(x, y, z);
             signal = this.offset - Math.abs(signal);
             signal *= signal;
             result += signal * this.expArray[i];
@@ -725,7 +700,7 @@ public final class ImplicitFractal extends ImplicitModuleBase {
         v *= this.frequency;
         
         for (int i = 0; i < this.octaves; ++i) {
-            double signal = this.sources[i].Get(x, y, z, w, u, v);
+            double signal = this.sources[i].get(x, y, z, w, u, v);
             signal = this.offset - Math.abs(signal);
             signal *= signal;
             result += signal * this.expArray[i];
@@ -745,7 +720,7 @@ public final class ImplicitFractal extends ImplicitModuleBase {
         x *= this.frequency;
         y *= this.frequency;
         
-        double value = this.sources[0].Get(x, y) + this.offset;
+        double value = this.sources[0].get(x, y) + this.offset;
         double weight = this.gain * value;
         x *= this.lacunarity;
         y *= this.lacunarity;
@@ -754,7 +729,7 @@ public final class ImplicitFractal extends ImplicitModuleBase {
             if (weight > 1.0) {
                 weight = 1.0;
             }
-            final double signal = (this.sources[i].Get(x, y) + this.offset) * this.expArray[i];
+            final double signal = (this.sources[i].get(x, y) + this.offset) * this.expArray[i];
             value += weight * signal;
             weight *= this.gain * signal;
             x *= this.lacunarity;
@@ -770,7 +745,7 @@ public final class ImplicitFractal extends ImplicitModuleBase {
         y *= this.frequency;
         z *= this.frequency;
         
-        double value = this.sources[0].Get(x, y, z) + this.offset;
+        double value = this.sources[0].get(x, y, z) + this.offset;
         double weight = this.gain * value;
         x *= this.lacunarity;
         y *= this.lacunarity;
@@ -780,7 +755,7 @@ public final class ImplicitFractal extends ImplicitModuleBase {
             if (weight > 1.0) {
                 weight = 1.0;
             }
-            final double signal = (this.sources[i].Get(x, y, z) + this.offset) * this.expArray[i];
+            final double signal = (this.sources[i].get(x, y, z) + this.offset) * this.expArray[i];
             value += weight * signal;
             weight *= this.gain * signal;
             x *= this.lacunarity;
@@ -797,7 +772,7 @@ public final class ImplicitFractal extends ImplicitModuleBase {
         z *= this.frequency;
         w *= this.frequency;
         
-        double value = this.sources[0].Get(x, y, z, w) + this.offset;
+        double value = this.sources[0].get(x, y, z, w) + this.offset;
         double weight = this.gain * value;
         x *= this.lacunarity;
         y *= this.lacunarity;
@@ -808,7 +783,7 @@ public final class ImplicitFractal extends ImplicitModuleBase {
             if (weight > 1.0) {
                 weight = 1.0;
             }
-            final double signal = (this.sources[i].Get(x, y, z, w) + this.offset) * this.expArray[i];
+            final double signal = (this.sources[i].get(x, y, z, w) + this.offset) * this.expArray[i];
             value += weight * signal;
             weight *= this.gain * signal;
             x *= this.lacunarity;
@@ -828,7 +803,7 @@ public final class ImplicitFractal extends ImplicitModuleBase {
         u *= this.frequency;
         v *= this.frequency;
         
-        double value = this.sources[0].Get(x, y, z, w, u, v) + this.offset;
+        double value = this.sources[0].get(x, y, z, w, u, v) + this.offset;
         double weight = this.gain * value;
         x *= this.lacunarity;
         y *= this.lacunarity;
@@ -841,7 +816,7 @@ public final class ImplicitFractal extends ImplicitModuleBase {
             if (weight > 1.0) {
                 weight = 1.0;
             }
-            final double signal = (this.sources[i].Get(x, y, z, w, u, v) + this.offset) * this.expArray[i];
+            final double signal = (this.sources[i].get(x, y, z, w, u, v) + this.offset) * this.expArray[i];
             value += weight * signal;
             weight *= this.gain * signal;
             x *= this.lacunarity;
