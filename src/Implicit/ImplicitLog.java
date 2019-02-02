@@ -1,25 +1,29 @@
 ﻿package Implicit;
 
 public final class ImplicitLog extends ImplicitModuleBase {
-    public ImplicitLog(ImplicitModuleBase source) {
+    public ImplicitLog(final ImplicitModuleBase source) {
         this.Source = source;
     }
-    
-    public ImplicitModuleBase Source;
-    
-    public double Get(double x, double y) {
+
+    private final ImplicitModuleBase Source;
+
+    @Override
+    public double Get(final double x, final double y) {
         return Math.log(this.Source.Get(x, y));
     }
-    
-    public double Get(double x, double y, double z) {
+
+    @Override
+    public double Get(final double x, final double y, final double z) {
         return Math.log(this.Source.Get(x, y, z));
     }
-    
-    public double Get(double x, double y, double z, double w) {
+
+    @Override
+    public double Get(final double x, final double y, final double z, final double w) {
         return Math.log(this.Source.Get(x, y, z, w));
     }
-    
-    public double Get(double x, double y, double z, double w, double u, double v) {
+
+    @Override
+    public double Get(final double x, final double y, final double z, final double w, final double u, final double v) {
         return Math.log(this.Source.Get(x, y, z, w, u, v));
     }
 }

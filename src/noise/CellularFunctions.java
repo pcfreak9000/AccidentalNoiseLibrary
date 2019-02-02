@@ -3,21 +3,21 @@
 import util.Maths;
 
 public class CellularFunctions {
-    
+
     private static final ValueNoise VALUE_NOISE = new ValueNoise();
-    
+
     private static void AddDistance(final double[] f, final double[] disp, final double testdist,
             final double testdisp) {
         // Compare the given distance to the ones already in f
         if (testdist >= f[3]) {
             return;
         }
-        
+
         int index = 3;
         while (index > 0 && testdist < f[index - 1]) {
             index--;
         }
-        
+
         for (int i = 3; i-- > index;) {
             f[i + 1] = f[i];
             disp[i + 1] = disp[i];
@@ -25,17 +25,17 @@ public class CellularFunctions {
         f[index] = testdist;
         disp[index] = testdisp;
     }
-    
+
     public static void CellularFunction(final double x, final double y, final int seed, final double[] f,
             final double[] disp) {
         final double xInt = Maths.floor(x);
         final double yInt = Maths.floor(y);
-        
+
         for (int c = 0; c < 4; ++c) {
             f[c] = 99999.0;
             disp[c] = 0.0;
         }
-        
+
         for (double ycur = yInt - 3; ycur <= yInt + 3; ++ycur) {
             for (double xcur = xInt - 3; xcur <= xInt + 3; ++xcur) {
                 final double xpos = xcur + VALUE_NOISE.internalNoise(x, y, xcur, ycur, seed);
@@ -50,18 +50,18 @@ public class CellularFunctions {
             }
         }
     }
-    
+
     public static void CellularFunction(final double x, final double y, final double z, final int seed,
             final double[] f, final double[] disp) {
         final double xInt = Maths.floor(x);
         final double yInt = Maths.floor(y);
         final double zInt = Maths.floor(z);
-        
+
         for (int c = 0; c < 4; ++c) {
             f[c] = 99999.0;
             disp[c] = 0.0;
         }
-        
+
         for (double zcur = zInt - 2; zcur <= zInt + 2; ++zcur) {
             for (double ycur = yInt - 2; ycur <= yInt + 2; ++ycur) {
                 for (double xcur = xInt - 2; xcur <= xInt + 2; ++xcur) {
@@ -81,19 +81,19 @@ public class CellularFunctions {
             }
         }
     }
-    
+
     public static void CellularFunction(final double x, final double y, final double z, final double w, final int seed,
             final double[] f, final double[] disp) {
         final double xInt = Maths.floor(x);
         final double yInt = Maths.floor(y);
         final double zInt = Maths.floor(z);
         final double wInt = Maths.floor(w);
-        
+
         for (int c = 0; c < 4; ++c) {
             f[c] = 99999.0;
             disp[c] = 0.0;
         }
-        
+
         for (double wcur = wInt - 2; wcur <= wInt + 2; ++wcur) {
             for (double zcur = zInt - 2; zcur <= zInt + 2; ++zcur) {
                 for (double ycur = yInt - 2; ycur <= yInt + 2; ++ycur) {
@@ -121,7 +121,7 @@ public class CellularFunctions {
             }
         }
     }
-    
+
     public static void CellularFunction(final double x, final double y, final double z, final double w, final double u,
             final double v, final int seed, final double[] f, final double[] disp) {
         final double xInt = Maths.floor(x);
@@ -130,12 +130,12 @@ public class CellularFunctions {
         final double wInt = Maths.floor(w);
         final double uInt = Maths.floor(u);
         final double vInt = Maths.floor(v);
-        
+
         for (int c = 0; c < 4; ++c) {
             f[c] = 99999.0;
             disp[c] = 0.0;
         }
-        
+
         for (double vcur = vInt - 1; vcur <= vInt + 1; ++vcur) {
             for (double ucur = uInt - 1; ucur <= uInt + 1; ++ucur) {
                 for (double wcur = wInt - 2; wcur <= wInt + 2; ++wcur) {
@@ -178,5 +178,5 @@ public class CellularFunctions {
             }
         }
     }
-    
+
 }

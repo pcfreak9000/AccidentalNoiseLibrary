@@ -13,9 +13,9 @@ public final class ImplicitBias extends ImplicitModuleBase {
         this.Bias = bias;
     }
 
-    public ImplicitModuleBase Source;
+    private ImplicitModuleBase Source;
 
-    public ImplicitModuleBase Bias;
+    private ImplicitModuleBase Bias;
 
     public ImplicitModuleBase getSource() {
         return this.Source;

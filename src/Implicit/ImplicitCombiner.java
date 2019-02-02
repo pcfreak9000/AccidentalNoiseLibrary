@@ -6,35 +6,36 @@ import java.util.Set;
 import Enums.CombinerType;
 
 public final class ImplicitCombiner extends ImplicitModuleBase {
-    private final Set<ImplicitModuleBase> sources = new HashSet<ImplicitModuleBase>();
-    
-    public ImplicitCombiner(CombinerType type) {
+    private final Set<ImplicitModuleBase> sources = new HashSet<>();
+
+    public ImplicitCombiner(final CombinerType type) {
         this.CombinerType = type;
     }
-    
-    public CombinerType CombinerType;
-    
+
+    private CombinerType CombinerType;
+
     public CombinerType getCombinerType() {
-        return CombinerType;
+        return this.CombinerType;
     }
-    
-    public void setCombinerType(CombinerType combinerType) {
-        CombinerType = combinerType;
+
+    public void setCombinerType(final CombinerType combinerType) {
+        this.CombinerType = combinerType;
     }
-    
-    public void AddSource(ImplicitModuleBase module) {
+
+    public void AddSource(final ImplicitModuleBase module) {
         this.sources.add(module);
     }
-    
-    public void RemoveSource(ImplicitModuleBase module) {
+
+    public void RemoveSource(final ImplicitModuleBase module) {
         this.sources.remove(module);
     }
-    
+
     public void ClearSources() {
         this.sources.clear();
     }
-    
-    public double Get(double x, double y) {
+
+    @Override
+    public double Get(final double x, final double y) {
         switch (this.CombinerType) {
         case Add:
             return this.AddGet(x, y);
@@ -50,8 +51,9 @@ public final class ImplicitCombiner extends ImplicitModuleBase {
             return 0.0;
         }
     }
-    
-    public double Get(double x, double y, double z) {
+
+    @Override
+    public double Get(final double x, final double y, final double z) {
         switch (this.CombinerType) {
         case Add:
             return this.AddGet(x, y, z);
@@ -67,8 +69,9 @@ public final class ImplicitCombiner extends ImplicitModuleBase {
             return 0.0;
         }
     }
-    
-    public double Get(double x, double y, double z, double w) {
+
+    @Override
+    public double Get(final double x, final double y, final double z, final double w) {
         switch (this.CombinerType) {
         case Add:
             return this.AddGet(x, y, z, w);
@@ -84,8 +87,9 @@ public final class ImplicitCombiner extends ImplicitModuleBase {
             return 0.0;
         }
     }
-    
-    public double Get(double x, double y, double z, double w, double u, double v) {
+
+    @Override
+    public double Get(final double x, final double y, final double z, final double w, final double u, final double v) {
         switch (this.CombinerType) {
         case Add:
             return this.AddGet(x, y, z, w, u, v);
@@ -101,149 +105,154 @@ public final class ImplicitCombiner extends ImplicitModuleBase {
             return 0.0;
         }
     }
-    
-    private double AddGet(double x, double y) {
+
+    private double AddGet(final double x, final double y) {
         double d = 0;
-        for (ImplicitModuleBase imb : sources) {
+        for (final ImplicitModuleBase imb : this.sources) {
             d += imb.Get(x, y);
         }
         return d;
     }
-    
-    private double AddGet(double x, double y, double z) {
+
+    private double AddGet(final double x, final double y, final double z) {
         double d = 0;
-        for (ImplicitModuleBase imb : sources) {
+        for (final ImplicitModuleBase imb : this.sources) {
             d += imb.Get(x, y, z);
         }
         return d;
     }
-    
-    private double AddGet(double x, double y, double z, double w) {
+
+    private double AddGet(final double x, final double y, final double z, final double w) {
         double d = 0;
-        for (ImplicitModuleBase imb : sources) {
+        for (final ImplicitModuleBase imb : this.sources) {
             d += imb.Get(x, y, z, w);
         }
         return d;
     }
-    
-    private double AddGet(double x, double y, double z, double w, double u, double v) {
+
+    private double AddGet(final double x, final double y, final double z, final double w, final double u,
+            final double v) {
         double d = 0;
-        for (ImplicitModuleBase imb : sources) {
+        for (final ImplicitModuleBase imb : this.sources) {
             d += imb.Get(x, y, z, w, u, v);
         }
         return d;
     }
-    
-    private double MultiplyGet(double x, double y) {
+
+    private double MultiplyGet(final double x, final double y) {
         double d = 1;
-        for (ImplicitModuleBase imb : sources) {
+        for (final ImplicitModuleBase imb : this.sources) {
             d *= imb.Get(x, y);
         }
         return d;
     }
-    
-    private double MultiplyGet(double x, double y, double z) {
+
+    private double MultiplyGet(final double x, final double y, final double z) {
         double d = 1;
-        for (ImplicitModuleBase imb : sources) {
+        for (final ImplicitModuleBase imb : this.sources) {
             d *= imb.Get(x, y, z);
         }
         return d;
     }
-    
-    private double MultiplyGet(double x, double y, double z, double w) {
+
+    private double MultiplyGet(final double x, final double y, final double z, final double w) {
         double d = 1;
-        for (ImplicitModuleBase imb : sources) {
+        for (final ImplicitModuleBase imb : this.sources) {
             d *= imb.Get(x, y, z, w);
         }
         return d;
     }
-    
-    private double MultiplyGet(double x, double y, double z, double w, double u, double v) {
+
+    private double MultiplyGet(final double x, final double y, final double z, final double w, final double u,
+            final double v) {
         double d = 1;
-        for (ImplicitModuleBase imb : sources) {
+        for (final ImplicitModuleBase imb : this.sources) {
             d *= imb.Get(x, y, z, w, u, v);
         }
         return d;
     }
-    
+
     //TODO correct?
-    private double MinGet(double x, double y) {
+    private double MinGet(final double x, final double y) {
         double d = Double.POSITIVE_INFINITY;
-        for (ImplicitModuleBase imb : sources) {
+        for (final ImplicitModuleBase imb : this.sources) {
             d = Math.min(d, imb.Get(x, y));
         }
         return d;
     }
-    
-    private double MinGet(double x, double y, double z) {
+
+    private double MinGet(final double x, final double y, final double z) {
         double d = Double.POSITIVE_INFINITY;
-        for (ImplicitModuleBase imb : sources) {
+        for (final ImplicitModuleBase imb : this.sources) {
             d = Math.min(d, imb.Get(x, y, z));
         }
         return d;
     }
-    
-    private double MinGet(double x, double y, double z, double w) {
+
+    private double MinGet(final double x, final double y, final double z, final double w) {
         double d = Double.POSITIVE_INFINITY;
-        for (ImplicitModuleBase imb : sources) {
+        for (final ImplicitModuleBase imb : this.sources) {
             d = Math.min(d, imb.Get(x, y, z, w));
         }
         return d;
     }
-    
-    private double MinGet(double x, double y, double z, double w, double u, double v) {
+
+    private double MinGet(final double x, final double y, final double z, final double w, final double u,
+            final double v) {
         double d = Double.POSITIVE_INFINITY;
-        for (ImplicitModuleBase imb : sources) {
+        for (final ImplicitModuleBase imb : this.sources) {
             d = Math.min(d, imb.Get(x, y, z, w, u, v));
         }
         return d;
     }
-    
-    private double MaxGet(double x, double y) {
+
+    private double MaxGet(final double x, final double y) {
         double d = Double.NEGATIVE_INFINITY;
-        for (ImplicitModuleBase imb : sources) {
+        for (final ImplicitModuleBase imb : this.sources) {
             d = Math.max(d, imb.Get(x, y));
         }
         return d;
     }
-    
-    private double MaxGet(double x, double y, double z) {
+
+    private double MaxGet(final double x, final double y, final double z) {
         double d = Double.NEGATIVE_INFINITY;
-        for (ImplicitModuleBase imb : sources) {
+        for (final ImplicitModuleBase imb : this.sources) {
             d = Math.max(d, imb.Get(x, y, z));
         }
         return d;
     }
-    
-    private double MaxGet(double x, double y, double z, double w) {
+
+    private double MaxGet(final double x, final double y, final double z, final double w) {
         double d = Double.NEGATIVE_INFINITY;
-        for (ImplicitModuleBase imb : sources) {
+        for (final ImplicitModuleBase imb : this.sources) {
             d = Math.max(d, imb.Get(x, y, z, w));
         }
         return d;
     }
-    
-    private double MaxGet(double x, double y, double z, double w, double u, double v) {
+
+    private double MaxGet(final double x, final double y, final double z, final double w, final double u,
+            final double v) {
         double d = Double.NEGATIVE_INFINITY;
-        for (ImplicitModuleBase imb : sources) {
+        for (final ImplicitModuleBase imb : this.sources) {
             d = Math.max(d, imb.Get(x, y, z, w, u, v));
         }
         return d;
     }
-    
-    private double AverageGet(double x, double y) {
-        return AddGet(x, y) / sources.size();
+
+    private double AverageGet(final double x, final double y) {
+        return AddGet(x, y) / this.sources.size();
     }
-    
-    private double AverageGet(double x, double y, double z) {
-        return AddGet(x, y, z) / sources.size();
+
+    private double AverageGet(final double x, final double y, final double z) {
+        return AddGet(x, y, z) / this.sources.size();
     }
-    
-    private double AverageGet(double x, double y, double z, double w) {
-        return AddGet(x, y, z, w) / sources.size();
+
+    private double AverageGet(final double x, final double y, final double z, final double w) {
+        return AddGet(x, y, z, w) / this.sources.size();
     }
-    
-    private double AverageGet(double x, double y, double z, double w, double u, double v) {
-        return AddGet(x, y, z, w, u, v) / sources.size();
+
+    private double AverageGet(final double x, final double y, final double z, final double w, final double u,
+            final double v) {
+        return AddGet(x, y, z, w, u, v) / this.sources.size();
     }
 }

@@ -8,37 +8,37 @@ public final class ImplicitBlend extends ImplicitModuleBase {
         this.Low = new ImplicitConstant(low);
         this.High = new ImplicitConstant(high);
     }
-
-    public ImplicitModuleBase Source;
-
-    public ImplicitModuleBase Low;
-
-    public ImplicitModuleBase High;
-
+    
+    private ImplicitModuleBase Source;
+    
+    private ImplicitModuleBase Low;
+    
+    private ImplicitModuleBase High;
+    
     public ImplicitModuleBase getSource() {
         return this.Source;
     }
-
+    
     public void setSource(final ImplicitModuleBase source) {
         this.Source = source;
     }
-
+    
     public ImplicitModuleBase getLow() {
         return this.Low;
     }
-
+    
     public void setLow(final ImplicitModuleBase low) {
         this.Low = low;
     }
-
+    
     public ImplicitModuleBase getHigh() {
         return this.High;
     }
-
+    
     public void setHigh(final ImplicitModuleBase high) {
         this.High = high;
     }
-
+    
     @Override
     public double Get(final double x, final double y) {
         final double v1 = this.Low.Get(x, y);
@@ -46,7 +46,7 @@ public final class ImplicitBlend extends ImplicitModuleBase {
         final double blend = (this.Source.Get(x, y) + 1.0) * 0.5;
         return Maths.Lerp(blend, v1, v2);
     }
-
+    
     @Override
     public double Get(final double x, final double y, final double z) {
         final double v1 = this.Low.Get(x, y, z);
@@ -54,7 +54,7 @@ public final class ImplicitBlend extends ImplicitModuleBase {
         final double blend = this.Source.Get(x, y, z);
         return Maths.Lerp(blend, v1, v2);
     }
-
+    
     @Override
     public double Get(final double x, final double y, final double z, final double w) {
         final double v1 = this.Low.Get(x, y, z, w);
@@ -62,7 +62,7 @@ public final class ImplicitBlend extends ImplicitModuleBase {
         final double blend = this.Source.Get(x, y, z, w);
         return Maths.Lerp(blend, v1, v2);
     }
-
+    
     @Override
     public double Get(final double x, final double y, final double z, final double w, final double u, final double v) {
         final double v1 = this.Low.Get(x, y, z, w, u, v);

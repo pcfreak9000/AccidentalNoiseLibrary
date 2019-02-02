@@ -1,49 +1,53 @@
 ﻿package Implicit;
 
 public final class ImplicitPow extends ImplicitModuleBase {
-    public ImplicitPow(ImplicitModuleBase source, double power) {
+    public ImplicitPow(final ImplicitModuleBase source, final double power) {
         this.Source = source;
         this.Power = new ImplicitConstant(power);
     }
-    
-    public ImplicitPow(ImplicitModuleBase source, ImplicitModuleBase power) {
+
+    public ImplicitPow(final ImplicitModuleBase source, final ImplicitModuleBase power) {
         this.Source = source;
         this.Power = power;
     }
-    
-    public ImplicitModuleBase Source;
-    
-    public ImplicitModuleBase Power;
-    
+
+    private ImplicitModuleBase Source;
+
+    private ImplicitModuleBase Power;
+
     public ImplicitModuleBase getSource() {
-        return Source;
+        return this.Source;
     }
-    
-    public void setSource(ImplicitModuleBase source) {
-        Source = source;
+
+    public void setSource(final ImplicitModuleBase source) {
+        this.Source = source;
     }
-    
+
     public ImplicitModuleBase getPower() {
-        return Power;
+        return this.Power;
     }
-    
-    public void setPower(ImplicitModuleBase power) {
-        Power = power;
+
+    public void setPower(final ImplicitModuleBase power) {
+        this.Power = power;
     }
-    
-    public double Get(double x, double y) {
+
+    @Override
+    public double Get(final double x, final double y) {
         return Math.pow(this.Source.Get(x, y), this.Power.Get(x, y));
     }
-    
-    public double Get(double x, double y, double z) {
+
+    @Override
+    public double Get(final double x, final double y, final double z) {
         return Math.pow(this.Source.Get(x, y, z), this.Power.Get(x, y, z));
     }
-    
-    public double Get(double x, double y, double z, double w) {
+
+    @Override
+    public double Get(final double x, final double y, final double z, final double w) {
         return Math.pow(this.Source.Get(x, y, z, w), this.Power.Get(x, y, z, w));
     }
-    
-    public double Get(double x, double y, double z, double w, double u, double v) {
+
+    @Override
+    public double Get(final double x, final double y, final double z, final double w, final double u, final double v) {
         return Math.pow(this.Source.Get(x, y, z, w, u, v), this.Power.Get(x, y, z, w, u, v));
     }
 }

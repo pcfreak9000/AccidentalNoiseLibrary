@@ -1,94 +1,159 @@
-﻿using System;
+﻿package Implicit;
 
-namespace TinkerWorX.AccidentalNoiseLibrary
-{
-    public sealed class ImplicitSphere : ImplicitModuleBase
-    {
-        public ImplicitSphere(
-            double xCenter = 0.00, double yCenter = 0.00, double zCenter = 0.00,
-            double wCenter = 0.00, double uCenter = 0.00, double vCenter = 0.00,
-            double radius = 1.00)
-        {
-            this.XCenter = new ImplicitConstant(xCenter);
-            this.YCenter = new ImplicitConstant(yCenter);
-            this.ZCenter = new ImplicitConstant(zCenter);
-            this.WCenter = new ImplicitConstant(wCenter);
-            this.UCenter = new ImplicitConstant(uCenter);
-            this.VCenter = new ImplicitConstant(vCenter);
-            this.Radius = new ImplicitConstant(radius);
+public final class ImplicitSphere extends ImplicitModuleBase {
+    public ImplicitSphere(final double xCenter, final double yCenter, final double zCenter, final double wCenter,
+            final double uCenter, final double vCenter, final double radius) {
+        this.XCenter = new ImplicitConstant(xCenter);
+        this.YCenter = new ImplicitConstant(yCenter);
+        this.ZCenter = new ImplicitConstant(zCenter);
+        this.WCenter = new ImplicitConstant(wCenter);
+        this.UCenter = new ImplicitConstant(uCenter);
+        this.VCenter = new ImplicitConstant(vCenter);
+        this.Radius = new ImplicitConstant(radius);
+    }
+
+    private ImplicitModuleBase XCenter;
+
+    private ImplicitModuleBase YCenter;
+
+    private ImplicitModuleBase ZCenter;
+
+    private ImplicitModuleBase WCenter;
+
+    private ImplicitModuleBase UCenter;
+
+    private ImplicitModuleBase VCenter;
+
+    private ImplicitModuleBase Radius;
+
+    public ImplicitModuleBase getXCenter() {
+        return this.XCenter;
+    }
+
+    public void setXCenter(final ImplicitModuleBase xCenter) {
+        this.XCenter = xCenter;
+    }
+
+    public ImplicitModuleBase getYCenter() {
+        return this.YCenter;
+    }
+
+    public void setYCenter(final ImplicitModuleBase yCenter) {
+        this.YCenter = yCenter;
+    }
+
+    public ImplicitModuleBase getZCenter() {
+        return this.ZCenter;
+    }
+
+    public void setZCenter(final ImplicitModuleBase zCenter) {
+        this.ZCenter = zCenter;
+    }
+
+    public ImplicitModuleBase getWCenter() {
+        return this.WCenter;
+    }
+
+    public void setWCenter(final ImplicitModuleBase wCenter) {
+        this.WCenter = wCenter;
+    }
+
+    public ImplicitModuleBase getUCenter() {
+        return this.UCenter;
+    }
+
+    public void setUCenter(final ImplicitModuleBase uCenter) {
+        this.UCenter = uCenter;
+    }
+
+    public ImplicitModuleBase getVCenter() {
+        return this.VCenter;
+    }
+
+    public void setVCenter(final ImplicitModuleBase vCenter) {
+        this.VCenter = vCenter;
+    }
+
+    public ImplicitModuleBase getRadius() {
+        return this.Radius;
+    }
+
+    public void setRadius(final ImplicitModuleBase radius) {
+        this.Radius = radius;
+    }
+
+    @Override
+    public double Get(final double x, final double y) {
+        final double dx = x - this.XCenter.Get(x, y);
+        final double dy = y - this.YCenter.Get(x, y);
+        final double len = Math.sqrt(dx * dx + dy * dy);
+        final double rad = this.Radius.Get(x, y);
+        double i = (rad - len) / rad;
+        if (i < 0) {
+            i = 0;
+        }
+        if (i > 1) {
+            i = 1;
         }
 
-        public ImplicitModuleBase XCenter { get; set; }
+        return i;
+    }
 
-        public ImplicitModuleBase YCenter { get; set; }
-
-        public ImplicitModuleBase ZCenter { get; set; }
-
-        public ImplicitModuleBase WCenter { get; set; }
-
-        public ImplicitModuleBase UCenter { get; set; }
-
-        public ImplicitModuleBase VCenter { get; set; }
-
-        public ImplicitModuleBase Radius { get; set; }
-
-        public override double Get(double x, double y)
-        {
-            var dx = x - this.XCenter.Get(x, y);
-            var dy = y - this.YCenter.Get(x, y);
-            var len = Math.Sqrt(dx * dx + dy * dy);
-            var rad = this.Radius.Get(x, y);
-            var i = (rad - len) / rad;
-            if (i < 0) i = 0;
-            if (i > 1) i = 1;
-
-            return i;
+    @Override
+    public double Get(final double x, final double y, final double z) {
+        final double dx = x - this.XCenter.Get(x, y, z);
+        final double dy = y - this.YCenter.Get(x, y, z);
+        final double dz = z - this.ZCenter.Get(x, y, z);
+        final double len = Math.sqrt(dx * dx + dy * dy + dz * dz);
+        final double rad = this.Radius.Get(x, y, z);
+        double i = (rad - len) / rad;
+        if (i < 0) {
+            i = 0;
+        }
+        if (i > 1) {
+            i = 1;
         }
 
-        public override double Get(double x, double y, double z)
-        {
-            var dx = x - this.XCenter.Get(x, y, z);
-            var dy = y - this.YCenter.Get(x, y, z);
-            var dz = z - this.ZCenter.Get(x, y, z);
-            var len = Math.Sqrt(dx * dx + dy * dy + dz * dz);
-            var rad = this.Radius.Get(x, y, z);
-            var i = (rad - len) / rad;
-            if (i < 0) i = 0;
-            if (i > 1) i = 1;
+        return i;
+    }
 
-            return i;
+    @Override
+    public double Get(final double x, final double y, final double z, final double w) {
+        final double dx = x - this.XCenter.Get(x, y, z, w);
+        final double dy = y - this.YCenter.Get(x, y, z, w);
+        final double dz = z - this.ZCenter.Get(x, y, z, w);
+        final double dw = w - this.WCenter.Get(x, y, z, w);
+        final double len = Math.sqrt(dx * dx + dy * dy + dz * dz + dw * dw);
+        final double rad = this.Radius.Get(x, y, z, w);
+        double i = (rad - len) / rad;
+        if (i < 0) {
+            i = 0;
+        }
+        if (i > 1) {
+            i = 1;
         }
 
-        public override double Get(double x, double y, double z, double w)
-        {
-            var dx = x - this.XCenter.Get(x, y, z, w);
-            var dy = y - this.YCenter.Get(x, y, z, w);
-            var dz = z - this.ZCenter.Get(x, y, z, w);
-            var dw = w - this.WCenter.Get(x, y, z, w);
-            var len = Math.Sqrt(dx * dx + dy * dy + dz * dz + dw * dw);
-            var rad = this.Radius.Get(x, y, z, w);
-            var i = (rad - len) / rad;
-            if (i < 0) i = 0;
-            if (i > 1) i = 1;
+        return i;
+    }
 
-            return i;
+    @Override
+    public double Get(final double x, final double y, final double z, final double w, final double u, final double v) {
+        final double dx = x - this.XCenter.Get(x, y, z, w, u, v);
+        final double dy = y - this.YCenter.Get(x, y, z, w, u, v);
+        final double dz = z - this.ZCenter.Get(x, y, z, w, u, v);
+        final double dw = w - this.WCenter.Get(x, y, z, w, u, v);
+        final double du = u - this.UCenter.Get(x, y, z, w, u, v);
+        final double dv = v - this.VCenter.Get(x, y, z, w, u, v);
+        final double len = Math.sqrt(dx * dx + dy * dy + dz * dz + dw * dw + du * du + dv * dv);
+        final double rad = this.Radius.Get(x, y, z, w, u, v);
+        double i = (rad - len) / rad;
+        if (i < 0) {
+            i = 0;
+        }
+        if (i > 1) {
+            i = 1;
         }
 
-        public override double Get(double x, double y, double z, double w, double u, double v)
-        {
-            var dx = x - this.XCenter.Get(x, y, z, w, u, v);
-            var dy = y - this.YCenter.Get(x, y, z, w, u, v);
-            var dz = z - this.ZCenter.Get(x, y, z, w, u, v);
-            var dw = w - this.WCenter.Get(x, y, z, w, u, v);
-            var du = u - this.UCenter.Get(x, y, z, w, u, v);
-            var dv = v - this.VCenter.Get(x, y, z, w, u, v);
-            var len = Math.Sqrt(dx * dx + dy * dy + dz * dz + dw * dw + du * du + dv * dv);
-            var rad = this.Radius.Get(x, y, z, w, u, v);
-            var i = (rad - len) / rad;
-            if (i < 0) i = 0;
-            if (i > 1) i = 1;
-
-            return i;
-        }
+        return i;
     }
 }

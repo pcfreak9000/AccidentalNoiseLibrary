@@ -3,7 +3,7 @@
 import Enums.MappingMode;
 import Implicit.ImplicitModuleBase;
 
-//TODO port Math class
+//TODO port Math class sin/cos!?
 public class Mapping {
     private static final double PI2 = Math.PI * 2.0;
 

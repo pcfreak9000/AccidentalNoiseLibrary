@@ -3,49 +3,53 @@
 import util.Maths;
 
 public final class ImplicitGain extends ImplicitModuleBase {
-    public ImplicitGain(ImplicitModuleBase source, double gain) {
+    public ImplicitGain(final ImplicitModuleBase source, final double gain) {
         this.Source = source;
         this.Gain = new ImplicitConstant(gain);
     }
-    
-    public ImplicitGain(ImplicitModuleBase source, ImplicitModuleBase gain) {
+
+    public ImplicitGain(final ImplicitModuleBase source, final ImplicitModuleBase gain) {
         this.Source = source;
         this.Gain = gain;
     }
-    
-    public ImplicitModuleBase Source;
-    
-    public ImplicitModuleBase Gain;
-    
+
+    private ImplicitModuleBase Source;
+
+    private ImplicitModuleBase Gain;
+
     public ImplicitModuleBase getSource() {
-        return Source;
+        return this.Source;
     }
-    
-    public void setSource(ImplicitModuleBase source) {
-        Source = source;
+
+    public void setSource(final ImplicitModuleBase source) {
+        this.Source = source;
     }
-    
+
     public ImplicitModuleBase getGain() {
-        return Gain;
+        return this.Gain;
     }
-    
-    public void setGain(ImplicitModuleBase gain) {
-        Gain = gain;
+
+    public void setGain(final ImplicitModuleBase gain) {
+        this.Gain = gain;
     }
-    
-    public double Get(double x, double y) {
+
+    @Override
+    public double Get(final double x, final double y) {
         return Maths.Gain(this.Gain.Get(x, y), this.Source.Get(x, y));
     }
-    
-    public double Get(double x, double y, double z) {
+
+    @Override
+    public double Get(final double x, final double y, final double z) {
         return Maths.Gain(this.Gain.Get(x, y, z), this.Source.Get(x, y, z));
     }
-    
-    public double Get(double x, double y, double z, double w) {
+
+    @Override
+    public double Get(final double x, final double y, final double z, final double w) {
         return Maths.Gain(this.Gain.Get(x, y, z, w), this.Source.Get(x, y, z, w));
     }
-    
-    public double Get(double x, double y, double z, double w, double u, double v) {
+
+    @Override
+    public double Get(final double x, final double y, final double z, final double w, final double u, final double v) {
         return Maths.Gain(this.Gain.Get(x, y, z, w, u, v), this.Source.Get(x, y, z, w, u, v));
     }
 }

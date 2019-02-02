@@ -4,28 +4,29 @@ import noise.Cache;
 
 public final class ImplicitCache extends ImplicitModuleBase {
     private final Cache cache2D = new Cache();
-    
+
     private final Cache cache3D = new Cache();
-    
+
     private final Cache cache4D = new Cache();
-    
+
     private final Cache cache6D = new Cache();
-    
-    public ImplicitCache(ImplicitModuleBase source) {
+
+    public ImplicitCache(final ImplicitModuleBase source) {
         this.Source = source;
     }
-    
-    public ImplicitModuleBase Source;
-    
+
+    private ImplicitModuleBase Source;
+
     public ImplicitModuleBase getSource() {
-        return Source;
+        return this.Source;
     }
-    
-    public void setSource(ImplicitModuleBase source) {
-        Source = source;
+
+    public void setSource(final ImplicitModuleBase source) {
+        this.Source = source;
     }
-    
-    public double Get(double x, double y) {
+
+    @Override
+    public double Get(final double x, final double y) {
         if (!this.cache2D.IsValid || this.cache2D.X != x || this.cache2D.Y != y) {
             this.cache2D.X = x;
             this.cache2D.Y = y;
@@ -34,8 +35,9 @@ public final class ImplicitCache extends ImplicitModuleBase {
         }
         return this.cache2D.Value;
     }
-    
-    public double Get(double x, double y, double z) {
+
+    @Override
+    public double Get(final double x, final double y, final double z) {
         if (!this.cache3D.IsValid || this.cache3D.X != x || this.cache3D.Y != y || this.cache3D.Z != z) {
             this.cache3D.X = x;
             this.cache3D.Y = y;
@@ -45,8 +47,9 @@ public final class ImplicitCache extends ImplicitModuleBase {
         }
         return this.cache3D.Value;
     }
-    
-    public double Get(double x, double y, double z, double w) {
+
+    @Override
+    public double Get(final double x, final double y, final double z, final double w) {
         if (!this.cache4D.IsValid || this.cache4D.X != x || this.cache4D.Y != y || this.cache4D.Z != z
                 || this.cache4D.W != w) {
             this.cache4D.X = x;
@@ -58,8 +61,9 @@ public final class ImplicitCache extends ImplicitModuleBase {
         }
         return this.cache4D.Value;
     }
-    
-    public double Get(double x, double y, double z, double w, double u, double v) {
+
+    @Override
+    public double Get(final double x, final double y, final double z, final double w, final double u, final double v) {
         if (!this.cache6D.IsValid || this.cache6D.X != x || this.cache6D.Y != y || this.cache6D.Z != z
                 || this.cache6D.W != w || this.cache6D.U != u || this.cache6D.V != v) {
             this.cache6D.X = x;

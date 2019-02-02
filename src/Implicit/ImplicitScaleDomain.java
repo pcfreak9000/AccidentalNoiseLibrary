@@ -1,8 +1,8 @@
 ﻿package Implicit;
 
 public final class ImplicitScaleDomain extends ImplicitModuleBase {
-    public ImplicitScaleDomain(ImplicitModuleBase source, double xScale, double yScale, double zScale, double wScale,
-            double uScale, double vScale) {
+    public ImplicitScaleDomain(final ImplicitModuleBase source, final double xScale, final double yScale,
+            final double zScale, final double wScale, final double uScale, final double vScale) {
         this.Source = source;
         this.XScale = new ImplicitConstant(xScale);
         this.YScale = new ImplicitConstant(yScale);
@@ -11,78 +11,79 @@ public final class ImplicitScaleDomain extends ImplicitModuleBase {
         this.UScale = new ImplicitConstant(uScale);
         this.VScale = new ImplicitConstant(vScale);
     }
-    
-    public ImplicitModuleBase Source;
-    
-    public ImplicitModuleBase XScale;
-    
-    public ImplicitModuleBase YScale;
-    
-    public ImplicitModuleBase ZScale;
-    
-    public ImplicitModuleBase WScale;
-    
-    public ImplicitModuleBase UScale;
-    
-    public ImplicitModuleBase VScale;
-    
+
+    private ImplicitModuleBase Source;
+
+    private ImplicitModuleBase XScale;
+
+    private ImplicitModuleBase YScale;
+
+    private ImplicitModuleBase ZScale;
+
+    private ImplicitModuleBase WScale;
+
+    private ImplicitModuleBase UScale;
+
+    private ImplicitModuleBase VScale;
+
     public ImplicitModuleBase getSource() {
-        return Source;
+        return this.Source;
     }
-    
-    public void setSource(ImplicitModuleBase source) {
-        Source = source;
+
+    public void setSource(final ImplicitModuleBase source) {
+        this.Source = source;
     }
-    
+
     public ImplicitModuleBase getXScale() {
-        return XScale;
+        return this.XScale;
     }
-    
-    public void setXScale(ImplicitModuleBase xScale) {
-        XScale = xScale;
+
+    public void setXScale(final ImplicitModuleBase xScale) {
+        this.XScale = xScale;
     }
-    
+
     public ImplicitModuleBase getYScale() {
-        return YScale;
+        return this.YScale;
     }
-    
-    public void setYScale(ImplicitModuleBase yScale) {
-        YScale = yScale;
+
+    public void setYScale(final ImplicitModuleBase yScale) {
+        this.YScale = yScale;
     }
-    
+
     public ImplicitModuleBase getZScale() {
-        return ZScale;
+        return this.ZScale;
     }
-    
-    public void setZScale(ImplicitModuleBase zScale) {
-        ZScale = zScale;
+
+    public void setZScale(final ImplicitModuleBase zScale) {
+        this.ZScale = zScale;
     }
-    
+
     public ImplicitModuleBase getWScale() {
-        return WScale;
+        return this.WScale;
     }
-    
-    public void setWScale(ImplicitModuleBase wScale) {
-        WScale = wScale;
+
+    public void setWScale(final ImplicitModuleBase wScale) {
+        this.WScale = wScale;
     }
-    
+
     public ImplicitModuleBase getUScale() {
-        return UScale;
+        return this.UScale;
     }
-    
-    public void setUScale(ImplicitModuleBase uScale) {
-        UScale = uScale;
+
+    public void setUScale(final ImplicitModuleBase uScale) {
+        this.UScale = uScale;
     }
-    
+
     public ImplicitModuleBase getVScale() {
-        return VScale;
+        return this.VScale;
     }
-    
-    public void setVScale(ImplicitModuleBase vScale) {
-        VScale = vScale;
+
+    public void setVScale(final ImplicitModuleBase vScale) {
+        this.VScale = vScale;
     }
-    
-    public void SetScales(double xScale, double yScale, double zScale, double wScale, double uScale, double vScale) {
+
+    public void SetScales(final double xScale, final double yScale, final double zScale, final double wScale,
+            final double uScale, final double vScale) {
         this.XScale = new ImplicitConstant(xScale);
         this.YScale = new ImplicitConstant(yScale);
         this.ZScale = new ImplicitConstant(zScale);
@@ -90,22 +91,26 @@ public final class ImplicitScaleDomain extends ImplicitModuleBase {
         this.UScale = new ImplicitConstant(uScale);
         this.VScale = new ImplicitConstant(vScale);
     }
-    
-    public double Get(double x, double y) {
+
+    @Override
+    public double Get(final double x, final double y) {
         return this.Source.Get(x * this.XScale.Get(x, y), y * this.YScale.Get(x, y));
     }
-    
-    public double Get(double x, double y, double z) {
+
+    @Override
+    public double Get(final double x, final double y, final double z) {
         return this.Source.Get(x * this.XScale.Get(x, y, z), y * this.YScale.Get(x, y, z),
                 z * this.ZScale.Get(x, y, z));
     }
-    
-    public double Get(double x, double y, double z, double w) {
+
+    @Override
+    public double Get(final double x, final double y, final double z, final double w) {
         return this.Source.Get(x * this.XScale.Get(x, y, z, w), y * this.YScale.Get(x, y, z, w),
                 z * this.ZScale.Get(x, y, z, w), w * this.WScale.Get(x, y, z, w));
     }
-    
-    public double Get(double x, double y, double z, double w, double u, double v) {
+
+    @Override
+    public double Get(final double x, final double y, final double z, final double w, final double u, final double v) {
         return this.Source.Get(x * this.XScale.Get(x, y, z, w, u, v), y * this.YScale.Get(x, y, z, w, u, v),
                 z * this.ZScale.Get(x, y, z, w, u, v), w * this.WScale.Get(x, y, z, w, u, v),
                 u * this.UScale.Get(x, y, z, w, u, v), v * this.VScale.Get(x, y, z, w, u, v));

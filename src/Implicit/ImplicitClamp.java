@@ -3,55 +3,60 @@
 import util.Maths;
 
 public final class ImplicitClamp extends ImplicitModuleBase {
-    public ImplicitClamp(ImplicitModuleBase source, double low, double high) {
+    public ImplicitClamp(final ImplicitModuleBase source, final double low, final double high) {
         this.Source = source;
         this.Low = new ImplicitConstant(low);
         this.High = new ImplicitConstant(high);
     }
-    
-    public ImplicitModuleBase Source;
-    
-    public ImplicitModuleBase Low;
-    
-    public ImplicitModuleBase High;
-    
+
+    private ImplicitModuleBase Source;
+
+    private ImplicitModuleBase Low;
+
+    private ImplicitModuleBase High;
+
     public ImplicitModuleBase getSource() {
-        return Source;
+        return this.Source;
     }
-    
-    public void setSource(ImplicitModuleBase source) {
-        Source = source;
+
+    public void setSource(final ImplicitModuleBase source) {
+        this.Source = source;
     }
-    
+
     public ImplicitModuleBase getLow() {
-        return Low;
+        return this.Low;
     }
-    
-    public void setLow(ImplicitModuleBase low) {
-        Low = low;
+
+    public void setLow(final ImplicitModuleBase low) {
+        this.Low = low;
     }
-    
+
     public ImplicitModuleBase getHigh() {
-        return High;
+        return this.High;
     }
-    
-    public void setHigh(ImplicitModuleBase high) {
-        High = high;
+
+    public void setHigh(final ImplicitModuleBase high) {
+        this.High = high;
     }
-    
-    public double Get(double x, double y) {
-        return Maths.Clamp(Source.Get(x, y), Low.Get(x, y), High.Get(x, y));
+
+    @Override
+    public double Get(final double x, final double y) {
+        return Maths.Clamp(this.Source.Get(x, y), this.Low.Get(x, y), this.High.Get(x, y));
     }
-    
-    public double Get(double x, double y, double z) {
-        return Maths.Clamp(Source.Get(x, y, z), Low.Get(x, y, z), High.Get(x, y, z));
+
+    @Override
+    public double Get(final double x, final double y, final double z) {
+        return Maths.Clamp(this.Source.Get(x, y, z), this.Low.Get(x, y, z), this.High.Get(x, y, z));
     }
-    
-    public double Get(double x, double y, double z, double w) {
-        return Maths.Clamp(Source.Get(x, y, z, w), Low.Get(x, y, z, w), High.Get(x, y, z, w));
+
+    @Override
+    public double Get(final double x, final double y, final double z, final double w) {
+        return Maths.Clamp(this.Source.Get(x, y, z, w), this.Low.Get(x, y, z, w), this.High.Get(x, y, z, w));
     }
-    
-    public double Get(double x, double y, double z, double w, double u, double v) {
-        return Maths.Clamp(Source.Get(x, y, z, w, u, v), Low.Get(x, y, z, w, u, v), High.Get(x, y, z, w, u, v));
+
+    @Override
+    public double Get(final double x, final double y, final double z, final double w, final double u, final double v) {
+        return Maths.Clamp(this.Source.Get(x, y, z, w, u, v), this.Low.Get(x, y, z, w, u, v),
+                this.High.Get(x, y, z, w, u, v));
     }
 }
