@@ -69,7 +69,7 @@ public final class ImplicitRotateDomain extends ImplicitModuleBase {
 
     @Override
     public double get(final double x, final double y) {
-        final double d = this.Angle.get(x, y) * 360.0 * 3.14159265 / 180.0;
+        final double d = this.Angle.get(x, y) * 360.0 * Math.PI / 180.0;
         final double cos2D = Math.cos(d);
         final double sin2D = Math.sin(d);
         final double nx = x * cos2D - y * sin2D;
