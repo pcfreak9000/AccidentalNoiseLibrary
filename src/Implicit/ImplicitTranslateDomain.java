@@ -1,4 +1,4 @@
-﻿package implicit;
+﻿package Implicit;
 
 public final class ImplicitTranslateDomain extends ImplicitModuleBase {
     public ImplicitTranslateDomain(final ImplicitModuleBase source, final double xAxis, final double yAxis,

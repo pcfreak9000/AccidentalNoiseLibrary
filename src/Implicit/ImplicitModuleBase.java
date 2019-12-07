@@ -1,4 +1,4 @@
-﻿package implicit;
+﻿package Implicit;
 
 public abstract class ImplicitModuleBase {
     //TODO move

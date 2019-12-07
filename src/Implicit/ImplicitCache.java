@@ -1,4 +1,4 @@
-﻿package implicit;
+﻿package Implicit;
 
 import noise.Cache;
 

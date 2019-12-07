@@ -1,4 +1,4 @@
-﻿package implicit;
+﻿package Implicit;
 
 public final class ImplicitRotateDomain extends ImplicitModuleBase {
     private final double[][] rotationMatrix = new double[3][3];

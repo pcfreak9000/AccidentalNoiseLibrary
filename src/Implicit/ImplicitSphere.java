@@ -1,4 +1,4 @@
-﻿package implicit;
+﻿package Implicit;
 
 public final class ImplicitSphere extends ImplicitModuleBase {
     public ImplicitSphere(final double xCenter, final double yCenter, final double zCenter, final double wCenter,

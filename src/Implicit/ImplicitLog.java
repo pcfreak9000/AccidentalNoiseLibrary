@@ -1,4 +1,4 @@
-﻿package implicit;
+﻿package Implicit;
 
 public final class ImplicitLog extends ImplicitModuleBase {
     public ImplicitLog(final ImplicitModuleBase source) {

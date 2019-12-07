@@ -1,4 +1,4 @@
-﻿package implicit;
+﻿package Implicit;
 
 public final class ImplicitCos extends ImplicitModuleBase {
     private ImplicitModuleBase Source;

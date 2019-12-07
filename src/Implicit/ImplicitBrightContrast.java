@@ -1,4 +1,4 @@
-﻿package implicit;
+﻿package Implicit;
 
 public final class ImplicitBrightContrast extends ImplicitModuleBase {
     public ImplicitBrightContrast(final ImplicitModuleBase source, final double brightness,

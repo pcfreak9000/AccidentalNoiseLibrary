@@ -1,4 +1,4 @@
-﻿package implicit;
+﻿package Implicit;
 
 public final class ImplicitInvert extends ImplicitModuleBase {
     public ImplicitInvert(final ImplicitModuleBase source) {

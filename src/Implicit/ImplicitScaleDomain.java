@@ -1,4 +1,4 @@
-﻿package implicit;
+﻿package Implicit;
 
 public final class ImplicitScaleDomain extends ImplicitModuleBase {
     public ImplicitScaleDomain(final ImplicitModuleBase source, final double xScale, final double yScale,

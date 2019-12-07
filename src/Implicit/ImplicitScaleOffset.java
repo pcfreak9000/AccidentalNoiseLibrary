@@ -1,4 +1,4 @@
-﻿package implicit;
+﻿package Implicit;
 
 public final class ImplicitScaleOffset extends ImplicitModuleBase {
     public ImplicitScaleOffset(final ImplicitModuleBase source, final double scale, final double offset) {

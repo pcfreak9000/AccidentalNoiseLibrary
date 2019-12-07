@@ -1,7 +1,7 @@
 ﻿package util;
 
+import Implicit.ImplicitModuleBase;
 import enums.MappingMode;
-import implicit.ImplicitModuleBase;
 
 //TODO port Math class sin/cos!?
 public class Mapping {

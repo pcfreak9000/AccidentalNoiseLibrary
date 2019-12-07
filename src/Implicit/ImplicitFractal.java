@@ -1,4 +1,4 @@
-﻿package implicit;
+﻿package Implicit;
 
 import enums.BasisType;
 import enums.FractalType;

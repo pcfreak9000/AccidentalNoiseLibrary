@@ -1,4 +1,4 @@
-﻿package implicit;
+﻿package Implicit;
 
 public final class ImplicitPow extends ImplicitModuleBase {
     public ImplicitPow(final ImplicitModuleBase source, final double power) {

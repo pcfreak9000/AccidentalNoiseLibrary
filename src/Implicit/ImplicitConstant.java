@@ -1,4 +1,4 @@
-﻿package implicit;
+﻿package Implicit;
 
 public final class ImplicitConstant extends ImplicitModuleBase {
     private final double value;

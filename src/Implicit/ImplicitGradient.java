@@ -1,4 +1,4 @@
-﻿package implicit;
+﻿package Implicit;
 
 public final class ImplicitGradient extends ImplicitModuleBase {
     private double gradientX0;

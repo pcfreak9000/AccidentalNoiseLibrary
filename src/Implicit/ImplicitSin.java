@@ -1,4 +1,4 @@
-﻿package implicit;
+﻿package Implicit;
 
 public final class ImplicitSin extends ImplicitModuleBase {
     private ImplicitModuleBase source;

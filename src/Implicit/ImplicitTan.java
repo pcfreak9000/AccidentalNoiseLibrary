@@ -1,4 +1,4 @@
-﻿package implicit;
+﻿package Implicit;
 
 public final class ImplicitTan extends ImplicitModuleBase {
     public ImplicitTan(final ImplicitModuleBase source) {
